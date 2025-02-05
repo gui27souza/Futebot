@@ -3,9 +3,6 @@ const { getNextTuesday } = require('../util/get-next-tuesday.js')
 const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
 
 function adicionarJogadorLista(nome) {
-    lista.push(nome)
-    numero_jogadores++
-    template_lista += `${numero_jogadores} - ${nome} ✅\n`
     let lista = readLista()
     lista.jogadores.push({
         nome: nome,
@@ -27,4 +24,13 @@ function getLista() {
     return template_lista
 }
 
-module.exports = { adicionarJogadorLista, getLista }
+function limpaLista() {
+    let lista = {
+        "jogadores": [
+        ],
+        "numero_jogadores": 0
+    }
+    updateLista(lista)
+}
+
+module.exports = { adicionarJogadorLista, getLista, limpaLista }

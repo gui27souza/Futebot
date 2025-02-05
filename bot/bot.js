@@ -4,6 +4,7 @@ const qrcode = require("qrcode-terminal")
 const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
 
 const { adicionarJogadorLista, getLista, limpaLista } = require("../services/lista-service.js")
+const ScheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
 
 let config = readConfig()
 
@@ -18,6 +19,15 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
     console.log("Bot conectado!")
+
+    const scheduleLimpaLista = new ScheduleLimpaLista(limpaLista)
+    scheduleLimpaLista.start()
+
+    if (config.id_grupo != 'none'){
+        setInterval(() => {
+            client.sendMessage(config.id_grupo, "✅ Lembrete: Mensagem automática a cada meia hora.")
+        }, 1800000)
+    }
 })
 
 client.on("message", (message) => {
