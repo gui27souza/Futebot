@@ -6,7 +6,7 @@
     "start": "node bot/bot.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gui27Souza",
   "license": "ISC",
   "description": "",
   "dependencies": {
