@@ -19,7 +19,7 @@ const path = require('path')
 
 // 
 
-// Read the data files and settings file
+// Read the config and lista files
     
     function readConfig() {
         return readJsonFile('config.json')
@@ -45,7 +45,7 @@ const path = require('path')
 
 // 
 
-// Update the album library data and the settings
+// Update the config and lista files
     
     function updateConfig(updatedConfigJson) {
         return updateJsonFile('config.json', updatedConfigJson)
