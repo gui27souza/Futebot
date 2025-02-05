@@ -37,12 +37,29 @@ client.on("message", (message) => {
     
     if (message.body == 'teste') {
         message.reply('teste')
+        return
     }
 
     if (config.id_grupo == 'none')
     if (message.from.includes('@g.us')) {
         config.id_grupo = message.from
         updateConfig(config)
+    }
+
+    if (message.body == '@5511976641404 lista') {
+        message.reply(getLista())
+        return
+    }
+
+    if (message.body == '@5511976641404 reset lista') {
+        let lista = {
+            "jogadores": [
+            ],
+            "numero_jogadores": 0
+        }
+        updateLista(lista)
+        message.reply(getLista())
+        return
     }
 
     if (message.body.includes('@5511976641404')) {
