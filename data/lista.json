@@ -1,0 +1,9 @@
+{
+   "jogadores": [
+      {
+         "nome": "opa",
+         "numero": 1
+      }
+   ],
+   "numero_jogadores": 1
+}
