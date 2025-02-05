@@ -8,6 +8,7 @@
     const { adicionarJogadorLista, getLista } = require("../services/lista-service.js")
 
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
+    const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
 // 
 
 // Client Auth
@@ -25,11 +26,7 @@
 client.on("ready", () => {
     console.log("Bot conectado!")
 
-    if (config.id_grupo != 'none'){
-        setInterval(() => {
-            client.sendMessage(config.id_grupo, "✅ Lembrete: Mensagem automática a cada meia hora.")
-        }, 1800000)
-    }
+    scheduleEnviaLista(client)
     scheduleLimpaLista(client)
 })
 
