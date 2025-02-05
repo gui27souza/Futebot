@@ -1,0 +1,27 @@
+# Ignorar dependências do Node.js
+node_modules/
+package-lock.json
+
+# Ignorar arquivos do whatsapp-web.js
+.wwebjs_*
+
+# Ignorar arquivos do ambiente do editor (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+
+# Ignorar logs e arquivos temporários
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar env (se estiver usando variáveis de ambiente)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignorar cache do sistema operacional (exemplo: macOS, Linux, Windows)
+.DS_Store
+Thumbs.db
