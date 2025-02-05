@@ -17,17 +17,18 @@ client.on("qr", (qr) => {
     qrcode.generate(qr, { small: true })
 })
 
+    const { adicionarJogadorLista, getLista } = require("../services/lista-service.js")
+
+    const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
 client.on("ready", () => {
     console.log("Bot conectado!")
-
-    const scheduleLimpaLista = new ScheduleLimpaLista(limpaLista)
-    scheduleLimpaLista.start()
 
     if (config.id_grupo != 'none'){
         setInterval(() => {
             client.sendMessage(config.id_grupo, "✅ Lembrete: Mensagem automática a cada meia hora.")
         }, 1800000)
     }
+    scheduleLimpaLista(client)
 })
 
 client.on("message", (message) => {

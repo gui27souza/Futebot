@@ -1,16 +1,15 @@
 const schedule = require('node-schedule')
 const { updateLista } = require('../../util/json-handler')
 
-class ScheduleLimpaLista {
-    constructor(callback) {
-        this.callback = callback
+function limpaLista() {
+    let lista = {
+        "jogadores": [
+        ],
+        "numero_jogadores": 0
     }
-
-    start() {
-        schedule.scheduleJob('0 0 * * 4', () => {
-            this.callback()
-        })
-    }
+    updateLista(lista)
 }
 
-module.exports = ScheduleLimpaLista
+module.exports = (client) => { 
+    schedule.scheduleJob('0 0 * * 4', limpaLista)
+}

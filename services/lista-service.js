@@ -24,13 +24,4 @@ function getLista() {
     return template_lista
 }
 
-function limpaLista() {
-    let lista = {
-        "jogadores": [
-        ],
-        "numero_jogadores": 0
-    }
-    updateLista(lista)
-}
-
-module.exports = { adicionarJogadorLista, getLista, limpaLista }
+module.exports = { adicionarJogadorLista, getLista }
