@@ -1,25 +1,27 @@
-const { Client, LocalAuth } = require("whatsapp-web.js")
-const qrcode = require("qrcode-terminal")
+// Module Imports
+    const { Client, LocalAuth } = require("whatsapp-web.js")
+    const qrcode = require("qrcode-terminal")
+// 
 
-const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
-
-const { adicionarJogadorLista, getLista, limpaLista } = require("../services/lista-service.js")
-const ScheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
-
-let config = readConfig()
-
-const client = new Client({
-    authStrategy: new LocalAuth()
-})
-
-client.on("qr", (qr) => {
-    console.log("Escaneie o QR Code abaixo:")
-    qrcode.generate(qr, { small: true })
-})
-
+// Functions Imports
+    const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
     const { adicionarJogadorLista, getLista } = require("../services/lista-service.js")
 
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
+// 
+
+// Client Auth
+    const client = new Client({
+        authStrategy: new LocalAuth()
+    })
+
+    client.on("qr", (qr) => {
+        console.log("Escaneie o QR Code abaixo:")
+        qrcode.generate(qr, { small: true })
+    })
+//
+
+// Bot Setup and Schedule Functions Setup
 client.on("ready", () => {
     console.log("Bot conectado!")
 
@@ -31,11 +33,13 @@ client.on("ready", () => {
     scheduleLimpaLista(client)
 })
 
+// Message Listener
 client.on("message", (message) => {
+    
+    let config = readConfig()
     
     if (message.body == 'teste') {
         message.reply('teste')
-        message.reply(config)
     }
 
     if (config.id_grupo == 'none')
