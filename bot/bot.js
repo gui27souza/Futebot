@@ -7,8 +7,9 @@
     const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
     const { adicionarJogadorLista, getLista } = require("../services/lista-service.js")
 
-    const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
     const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
+    const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
+    const scheduleSorteiaTimes = require('../services/periodico/semanal-sorteia-times.js')
 // 
 
 // Client Auth
@@ -45,6 +46,8 @@ client.on("ready", () => {
     scheduleEnviaLista(client)
     // Weekly Clear Lista Function
     scheduleLimpaLista(client)
+    // Weekly Draw Times from Lista
+    scheduleSorteiaTimes(client)
 })
 
 // Message Listener
