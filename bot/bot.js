@@ -15,7 +15,18 @@
     const client = new Client({
         authStrategy: new LocalAuth(),
         puppeteer: {
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-gpu',
+                '--disable-dev-shm-usage',
+                '--disable-accelerated-video-decode',
+                '--disable-accelerated-mjpeg-decode',
+                '--disable-software-rasterizer',
+                '--no-zygote',
+                '--single-process'
+            ]
         }
     })
 
