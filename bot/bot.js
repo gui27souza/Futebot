@@ -100,4 +100,5 @@ client.on("message", (message) => {
 
 })
 
+// Main Function
 client.initialize()
