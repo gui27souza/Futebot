@@ -6,7 +6,7 @@
 //
 
 // Send Lista to group chat
-function enviarLista() {
+function enviarLista(client) {
     // Get group chat id
     const config = readConfig()
     // Get formatted Lista
@@ -19,14 +19,14 @@ function enviarLista() {
 module.exports = (client) => {
 
     // Test
-    // schedule.scheduleJob('* * * * *', enviarLista)
+    // schedule.scheduleJob('* * * * *', () => enviarLista(client))
 
     // Tuesday each 30min (08:00 - 20:00)
-    schedule.scheduleJob('*/30 8-20 * * 2', enviarLista)
+    schedule.scheduleJob('*/30 8-20 * * 2', () => enviarLista(client))
 
     // Sunday and Monday each 1h (08:00 - 20:00)
-    schedule.scheduleJob('0 8-20/1 * * 0,1', enviarLista)
+    schedule.scheduleJob('0 8-20/1 * * 0,1', () => enviarLista(client))
 
     // Friday and Saturday each 3h (08:00 - 20:00)
-    schedule.scheduleJob('0 8-20/3 * * 5,6', enviarLista)
+    schedule.scheduleJob('0 8-20/3 * * 5,6', () => enviarLista(client))
 }
