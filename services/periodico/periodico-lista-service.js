@@ -1,25 +1,32 @@
-const schedule = require('node-schedule')
-const { readConfig } = require('../../util/json-handler')
-const { getLista } = require('../lista-service')
+// Modules and Functions Import
+    const schedule = require('node-schedule')
 
+    const { readConfig } = require('../../util/json-handler')
+    const { getLista } = require('../lista-service')
+//
+
+// Send Lista to group chat
+function enviarLista() {
+    // Get group chat id
+    const config = readConfig()
+    // Get formatted Lista
+    const mensagem = getLista()
+    // Send formatted Lista to group chat
+    client.sendMessage(config.id_grupo, mensagem)
+}
+
+// Functions Exports
 module.exports = (client) => {
 
-    const config = readConfig()
+    // Test
+    // schedule.scheduleJob('* * * * *', enviarLista)
 
-    const enviarMensagem = () => {
-        const mensagem = getLista()
-        client.sendMessage(config.id_grupo, mensagem)
-    }
+    // Tuesday each 30min (08:00 - 20:00)
+    schedule.scheduleJob('*/30 8-20 * * 2', enviarLista)
 
-    // Teste
-    // schedule.scheduleJob('* * * * *', enviarMensagem)
+    // Sunday and Monday each 1h (08:00 - 20:00)
+    schedule.scheduleJob('0 8-20/1 * * 0,1', enviarLista)
 
-    // Terça-feira a cada 30 minutos (08:00 - 20:00)
-    schedule.scheduleJob('*/30 8-20 * * 2', enviarMensagem)
-
-    // Domingo e segunda a cada 1 hora (08:00 - 20:00)
-    schedule.scheduleJob('0 8-20/1 * * 0,1', enviarMensagem)
-
-    // Sexta e sábado a cada 3 horas (08:00 - 20:00)
-    schedule.scheduleJob('0 8-20/3 * * 5,6', enviarMensagem)
+    // Friday and Saturday each 3h (08:00 - 20:00)
+    schedule.scheduleJob('0 8-20/3 * * 5,6', enviarLista)
 }

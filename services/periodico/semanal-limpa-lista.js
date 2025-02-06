@@ -1,15 +1,23 @@
-const schedule = require('node-schedule')
-const { updateLista } = require('../../util/json-handler')
+// Module and Functions Imports
+    const schedule = require('node-schedule')
 
+    const { updateLista } = require('../../util/json-handler')
+// 
+
+// Resets Lista
 function limpaLista() {
+    // New clean object
     let lista = {
         "jogadores": [
         ],
         "numero_jogadores": 0
     }
+    // Update the JSON file with clean object
     updateLista(lista)
 }
 
-module.exports = (client) => { 
+// Functions Exports
+module.exports = (client) => {
+    // Every Wednesday at 00:00
     schedule.scheduleJob('0 0 * * 4', limpaLista)
 }

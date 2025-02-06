@@ -1,6 +1,7 @@
-// Module imports
-const fs = require('fs')
-const path = require('path')
+// Modules imports
+    const fs = require('fs')
+    const path = require('path')
+//
 
 // Generic function to read json data files
     
@@ -58,4 +59,9 @@ const path = require('path')
 // 
 
 // Module exports
-module.exports = { readConfig, updateConfig, readLista, updateLista }
+module.exports = { 
+    readConfig,
+    updateConfig,
+    readLista,
+    updateLista
+}

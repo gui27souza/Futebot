@@ -1,4 +1,6 @@
+// Find the next Tuesday date
 function getNextTuesday() {
+
     const today = new Date()
     const dayOfWeek = today.getDay()
 
@@ -14,4 +16,7 @@ function getNextTuesday() {
     }
 }
 
-module.exports = {getNextTuesday}
+// Functions Exports
+module.exports = {
+    getNextTuesday
+}

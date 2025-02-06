@@ -8,7 +8,7 @@
   "keywords": [],
   "author": "Gui27Souza",
   "license": "ISC",
-  "description": "",
+  "description": "Futebot is a whatsapp bot to help in the organization of soccer matches between friends!",
   "dependencies": {
     "fs": "^0.0.1-security",
     "node-schedule": "^2.1.1",

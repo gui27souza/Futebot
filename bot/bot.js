@@ -30,7 +30,9 @@
 client.on("ready", () => {
     console.log("Bot conectado!")
 
+    // Daily/Hourly Get Lista Function
     scheduleEnviaLista(client)
+    // Weekly Clear Lista Function
     scheduleLimpaLista(client)
 })
 
@@ -39,22 +41,26 @@ client.on("message", (message) => {
     
     let config = readConfig()
     
+    // Dev test
     if (message.body == 'teste') {
         message.reply('teste')
         return
     }
 
+    // Stores the ID of the group chat, used for the scheduled functions
     if (config.id_grupo == 'none')
     if (message.from.includes('@g.us')) {
         config.id_grupo = message.from
         updateConfig(config)
     }
 
+    // Get Lista Command
     if (message.body == '@5511976641404 lista') {
         message.reply(getLista())
         return
     }
 
+    // Reset Lista Command
     if (message.body == '@5511976641404 reset lista') {
         let lista = {
             "jogadores": [
@@ -66,6 +72,7 @@ client.on("message", (message) => {
         return
     }
 
+    // Add Jogador to Lista
     if (message.body.includes('@5511976641404')) {
         
         let nome_jogador
@@ -76,6 +83,7 @@ client.on("message", (message) => {
         
         message.reply(getLista())
     }
+
 })
 
 client.initialize()
