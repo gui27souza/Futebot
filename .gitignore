@@ -25,3 +25,6 @@ yarn-error.log*
 # Ignorar cache do sistema operacional (exemplo: macOS, Linux, Windows)
 .DS_Store
 Thumbs.db
+
+# Other
+todo.txt
