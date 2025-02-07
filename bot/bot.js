@@ -6,7 +6,7 @@
 // Functions Imports
     const { getDate } = require("../util/get-date.js")
     const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
-    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLast, removeLastNaoVai } = require("../services/lista-service.js")
+    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLastJogador, removeLastNaoVai, removeJogador } = require("../services/lista-service.js")
 
     const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
@@ -100,15 +100,32 @@ client.on("message", (message) => {
         return
     }
 
-    // Remove Jogador of Lista
+    // Remove secified Jogador of Lista
+    if (message.body == '@5511976641404 rmJogador ') {
+        
+        let nome_jogador = message.body.replace('@5511976641404 rmJogador ', '').trim()
+        if (nome_jogador == '') return
+
+        let achou_removeu = removeJogador(nome_jogador)
+
+        if(achou_removeu) {
+            message.reply(getLista())
+            console.log('\n', getDate(), `  Removeu jogador ${nome_jogador.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}`)
+        } else {
+            message.reply(`Jogador ${nome_jogador} não esta na lista 🧐!!`)
+            console.log('\n', getDate(), `  Não removeu ${nome_jogador.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
+        }
+    }
+
+    // Remove last Jogador of Lista
     if (message.body == '@5511976641404 rmLastJogador') {
-        removeLast()
+        removeLastJogador()
         message.reply(getLista())
         console.log('\n', getDate(), '  Removeu ultimo jogador adicionado')
         return
     }
 
-    // Remove NaoVai of Lista
+    // Remove last NaoVai of Lista
     if (message.body == '@5511976641404 rmLastNaoVai') {
         removeLastNaoVai()
         message.reply(getLista())

@@ -12,7 +12,6 @@ function adicionarJogadorLista(nome) {
     // Add Jogador to Lista object
     lista.jogadores.push({
         nome: nome,
-        numero: ++lista.numero_jogadores
     })
 
     // Update JSON file with new Lista object with new Jogador
@@ -34,8 +33,28 @@ function adicionarNaoVai(nome) {
     updateLista(lista)
 }
 
+function removeJogador(nome) {
+
+    let lista = readLista()
+
+    let aux = lista.jogadores[0]
+    let achou_removeu = false
+    for (let i = 0; i < lista.numero_jogadores; i++) {
+        if (aux.nome == nome) {
+            lista.jogadores.splice(i, 1)
+            lista.numero_jogadores--
+            achou_removeu = true
+            updateLista(lista)
+            break
+        }
+        aux = lista.jogadores[i+1]
+    }
+
+    return achou_removeu
+}
+
 // Remove last Jogador from Lista
-function removeLast() {
+function removeLastJogador() {
 
     // Get Lista object from JSON file
     let lista = readLista()
@@ -70,8 +89,9 @@ function getLista() {
     let lista = readLista()
 
     // Add each Jogador to Lista template
+    let i = 0
     lista.jogadores.forEach(jogador => {
-        template_lista += `  ${jogador.numero} - ${jogador.nome}\n`
+        template_lista += `  ${i++} - ${jogador.nome}\n`
     })
     
     template_lista += '\n❌ AUSENTES ❌\n'
@@ -89,7 +109,8 @@ function getLista() {
 module.exports = { 
     adicionarJogadorLista,
     adicionarNaoVai,
-    removeLast,
+    removeJogador,
+    removeLastJogador,
     removeLastNaoVai,
     getLista
 }
