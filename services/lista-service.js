@@ -64,7 +64,7 @@ function getLista() {
 
     // Get next tuesday date and uses in Lista template
     let proxima_terca = getNextTuesday()
-    let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\n\n`
+    let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\nDIA DE PAGAR A QUADRA\nPIX (11)97494-3376\n\nTIME - 21:00 às 23:00\n\n`
 
     // Get Lista object from JSON file
     let lista = readLista()
@@ -74,11 +74,11 @@ function getLista() {
         template_lista += `  ${jogador.numero} - ${jogador.nome}\n`
     })
     
-    template_lista += '\n'
+    template_lista += '\n❌ AUSENTES ❌'
 
     // Add each Jogador to Lista template
     lista.nao_vai.forEach(nao_vai => {
-        template_lista += ` ❌ ${nao_vai.nome} ❌\n`
+        template_lista += ` ${nao_vai.nome} ❌\n`
     })    
 
     // Return formatted Lista in string
