@@ -100,7 +100,7 @@ client.on("message", (message) => {
         return
     }
 
-    // Remove secified Jogador of Lista
+    // Remove specified Jogador of Lista
     if (message.body == '@5511976641404 rmJogador ') {
         
         let nome_jogador = message.body.replace('@5511976641404 rmJogador ', '').trim()

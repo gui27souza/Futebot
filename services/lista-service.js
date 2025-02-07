@@ -33,10 +33,13 @@ function adicionarNaoVai(nome) {
     updateLista(lista)
 }
 
+// Remove specified Jogador of Lista
 function removeJogador(nome) {
 
+    // Get Lista object from JSON file
     let lista = readLista()
 
+    // Runs through the array of Jogadores
     let achou_removeu = false
     for (let i = 0; i < lista.numero_jogadores; i++) {
         if (lista.jogadores[i].nome === nome) {
@@ -48,6 +51,7 @@ function removeJogador(nome) {
         }
     }
 
+    // Return if it was successfull or not
     return achou_removeu
 }
 
