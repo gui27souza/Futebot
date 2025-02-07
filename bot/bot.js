@@ -71,9 +71,10 @@ client.on("message", (message) => {
         console.log('\n', getDate(), '\nID do Grupo obtido: ', config.id_grupo)
     }
 
-    if (message.body === '@5511976641404' || message.body == '@5511976641404 help') {
+    if (message.body == '@5511976641404 help') {
         message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana\n")
         console.log('\n', getDate(), '\nEnviou help')
+        return
     }
 
     // Get Lista Command
@@ -100,7 +101,7 @@ client.on("message", (message) => {
     }
 
     // Remove Jogador of Lista
-    if (message.body == '@5511976641404 rmLastJogador ') {
+    if (message.body == '@5511976641404 rmLastJogador') {
         removeLast()
         message.reply(getLista())
         console.log('\n', getDate(), '\nRemoveu ultimo jogador adicionado')
@@ -108,7 +109,7 @@ client.on("message", (message) => {
     }
 
     // Remove NaoVai of Lista
-    if (message.body == '@5511976641404 rmLastNaoVai ') {
+    if (message.body == '@5511976641404 rmLastNaoVai') {
         removeLastNaoVai()
         message.reply(getLista())
         console.log('\n', getDate(), '\nRemoveu ultimo naovai adicionado')
