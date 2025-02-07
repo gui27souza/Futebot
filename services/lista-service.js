@@ -68,7 +68,7 @@ function removeNaoVai(nome) {
     for (let i = 0; i < lista.numero_naovai; i++) {
         if (lista.nao_vai[i].nome == nome) {
             lista.nao_vai.splice(i, 1)
-            lista.nao_vai--
+            lista.numero_naovai--
             achou_removeu = true
             updateLista(lista)
             break
@@ -99,6 +99,7 @@ function removeLastNaoVai() {
     let lista = readLista()
 
     lista.nao_vai.pop()
+    lista.numero_naovai--
 
     // Update JSON file with new Lista object
     updateLista(lista)
