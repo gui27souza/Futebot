@@ -74,7 +74,7 @@ function getLista() {
         template_lista += `  ${jogador.numero} - ${jogador.nome}\n`
     })
     
-    template_lista += '\n❌ AUSENTES ❌'
+    template_lista += '\n❌ AUSENTES ❌\n'
 
     // Add each Jogador to Lista template
     lista.nao_vai.forEach(nao_vai => {
