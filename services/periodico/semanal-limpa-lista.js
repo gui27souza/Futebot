@@ -14,6 +14,8 @@ function limpaLista() {
     }
     // Update the JSON file with clean object
     updateLista(lista)
+
+    console.log('Fez a limpeza semanal da lista')
 }
 
 // Functions Exports

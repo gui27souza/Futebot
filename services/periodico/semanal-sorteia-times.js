@@ -57,6 +57,8 @@ function sorteiaTimes(client) {
 
     // Send formatted Lista to group chat
     client.sendMessage(config.id_grupo, template_times)
+
+    console.log('Fez o Sorteio Semanal dos times\n', template_times)
 }
 
 // Functions Exports

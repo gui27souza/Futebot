@@ -13,6 +13,7 @@ function enviarLista(client) {
     const mensagem = getLista()
     // Send formatted Lista to group chat
     client.sendMessage(config.id_grupo, mensagem)
+    console.log('Enviou a Lista no horario marcado')
 }
 
 // Functions Exports

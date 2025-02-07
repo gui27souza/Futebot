@@ -56,13 +56,6 @@ client.on("message", (message) => {
     
     let config = readConfig()
 
-    // Dev test
-    if (message.body == '@5511976641404 teste' && message.author === '5511980640455@c.us') {
-        message.reply('teste')
-        console.log('\n', getDate(), '  teste ')
-        return
-    }
-    
     // Stores the ID of the group chat, used for the scheduled functions
     if (config.id_grupo == 'none')
     if (message.from.includes('@g.us')) {
@@ -71,16 +64,24 @@ client.on("message", (message) => {
         console.log('\n', getDate(), '  ID do Grupo obtido: ', config.id_grupo)
     }
 
+    // Dev test
+    if (message.body == '@5511976641404 teste' && message.author === '5511980640455@c.us') {
+        message.reply('teste')
+        console.log('\n', getDate(), '  teste ')
+        return
+    }
+
+    // Get Commands list
     if (message.body == '@5511976641404 help') {
-        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana\n")
-        console.log('\n', getDate(), '  Enviou help')
+        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmJogador - apaga o jogador\nrmNaoVai - remove o que não vai\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana (admin only)\n")
+        console.log('\n', getDate(), '  Enviou help a pedido de usuario ', message._data.notifyName.toUpperCase())
         return
     }
 
     // Get Lista Command
     if (message.body == '@5511976641404 showLista') {
         message.reply(getLista())
-        console.log('\n', getDate(), '  Enviou lista a pedido de usuário')
+        console.log('\n', getDate(), '  Enviou lista a pedido de usuário ', message._data.notifyName.toUpperCase())
         return
     }
 
@@ -94,7 +95,7 @@ client.on("message", (message) => {
         }
         updateLista(lista)
         message.reply(getLista())
-        console.log('\n', getDate(), '  Resetou lista a pedido de usuário')
+        console.log('\n', getDate(), '  Resetou lista a pedido de usuário ', message._data.notifyName.toUpperCase())
         return
     }
 
@@ -140,7 +141,7 @@ client.on("message", (message) => {
     if (message.body == '@5511976641404 rmLastJogador') {
         removeLastJogador()
         message.reply(getLista())
-        console.log('\n', getDate(), '  Removeu ultimo jogador adicionado')
+        console.log('\n', getDate(), '  Removeu ultimo jogador adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
         return
     }
 
@@ -148,7 +149,7 @@ client.on("message", (message) => {
     if (message.body == '@5511976641404 rmLastNaoVai') {
         removeLastNaoVai()
         message.reply(getLista())
-        console.log('\n', getDate(), '  Removeu ultimo naovai adicionado')
+        console.log('\n', getDate(), '  Removeu ultimo naovai adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
         return
     }
     
@@ -161,7 +162,7 @@ client.on("message", (message) => {
         adicionarNaoVai(nome_naovai)
 
         message.reply(getLista())
-        console.log('\n', getDate(), '  Adicionou jogador que nao vai a lista')
+        console.log('\n', getDate(), `  Adicionou jogador ${nome_naovai} que nao vai a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
         return
     }
 
@@ -174,7 +175,7 @@ client.on("message", (message) => {
         adicionarJogadorLista(nome_jogador)
         
         message.reply(getLista())
-        console.log('\n', getDate(), '  Adicionou jogador a lista')
+        console.log('\n', getDate(), `  Adicionou jogador ${nome_jogador} a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
         return
     } 
 
