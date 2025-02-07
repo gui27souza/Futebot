@@ -41,7 +41,7 @@
 
 // Bot Setup and Schedule Functions Setup
 client.on("ready", () => {
-    console.log('\n', getDate(), '\nBot conectado!')
+    console.log('\n', getDate(), '\n  Bot conectado!')
 
     // Daily/Hourly Get Lista Function
     scheduleEnviaLista(client)
@@ -59,7 +59,7 @@ client.on("message", (message) => {
     // Dev test
     if (message.body == '@5511976641404 teste') {
         message.reply('teste')
-        console.log('\n', getDate(), '\nteste')
+        console.log('\n', getDate(), '\n  teste')
         return
     }
     
@@ -68,19 +68,19 @@ client.on("message", (message) => {
     if (message.from.includes('@g.us')) {
         config.id_grupo = message.from
         updateConfig(config)
-        console.log('\n', getDate(), '\nID do Grupo obtido: ', config.id_grupo)
+        console.log('\n', getDate(), '\n  ID do Grupo obtido: ', config.id_grupo)
     }
 
     if (message.body == '@5511976641404 help') {
         message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana\n")
-        console.log('\n', getDate(), '\nEnviou help')
+        console.log('\n', getDate(), '\n  Enviou help')
         return
     }
 
     // Get Lista Command
     if (message.body == '@5511976641404 showLista') {
         message.reply(getLista())
-        console.log('\n', getDate(), '\nEnviou lista a pedido de usuário')
+        console.log('\n', getDate(), '\n  Enviou lista a pedido de usuário')
         return
     }
 
@@ -96,7 +96,7 @@ client.on("message", (message) => {
         }
         updateLista(lista)
         message.reply(getLista())
-        console.log('\n', getDate(), '\nResetou lista a pedido de usuário')
+        console.log('\n', getDate(), '\n  Resetou lista a pedido de usuário')
         return
     }
 
@@ -104,7 +104,7 @@ client.on("message", (message) => {
     if (message.body == '@5511976641404 rmLastJogador') {
         removeLast()
         message.reply(getLista())
-        console.log('\n', getDate(), '\nRemoveu ultimo jogador adicionado')
+        console.log('\n', getDate(), '\n  Removeu ultimo jogador adicionado')
         return
     }
 
@@ -112,7 +112,7 @@ client.on("message", (message) => {
     if (message.body == '@5511976641404 rmLastNaoVai') {
         removeLastNaoVai()
         message.reply(getLista())
-        console.log('\n', getDate(), '\nRemoveu ultimo naovai adicionado')
+        console.log('\n', getDate(), '\n  Removeu ultimo naovai adicionado')
         return
     }
     
@@ -125,7 +125,7 @@ client.on("message", (message) => {
         adicionarNaoVai(nome_naovai)
 
         message.reply(getLista())
-        console.log('\n', getDate(), '\nAdicionou jogador que nao vai a lista')
+        console.log('\n', getDate(), '\n  Adicionou jogador que nao vai a lista')
         return
     }
 
@@ -138,7 +138,7 @@ client.on("message", (message) => {
         adicionarJogadorLista(nome_jogador)
         
         message.reply(getLista())
-        console.log('\n', getDate(), '\nAdicionou jogador a lista')
+        console.log('\n', getDate(), '\n  Adicionou jogador a lista')
         return
     } 
 
