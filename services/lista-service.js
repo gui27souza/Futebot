@@ -89,7 +89,7 @@ function getLista() {
     let lista = readLista()
 
     // Add each Jogador to Lista template
-    let i = 0
+    let i = 1
     lista.jogadores.forEach(jogador => {
         template_lista += `  ${i++} - ${jogador.nome}\n`
     })
