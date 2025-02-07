@@ -1,3 +1,13 @@
+# 1.3.0
+    - added NaoVai lista
+    - updated/added new commands
+        - showLista
+        - resetLista
+        - rmLastJogador
+        - rmLastNaoVai
+        - não 
+        - add
+
 # 1.2.0
     - added draw Times feature
         - Draws Times based on Jogadores on Lista

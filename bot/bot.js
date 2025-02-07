@@ -54,14 +54,14 @@ client.on("ready", () => {
 client.on("message", (message) => {
     
     let config = readConfig()
-    
+
     // Dev test
     if (message.body == 'teste') {
         message.reply('teste')
         console.log('teste')
         return
     }
-
+    
     // Stores the ID of the group chat, used for the scheduled functions
     if (config.id_grupo == 'none')
     if (message.from.includes('@g.us')) {
@@ -90,6 +90,9 @@ client.on("message", (message) => {
         updateLista(lista)
         message.reply(getLista())
         console.log('\nResetou lista a pedido de usuário')
+        return
+    }
+
     // Remove Jogador of Lista
     if (message.body == '@5511976641404 rmLastJogador ') {
         removeLast()
@@ -122,16 +125,15 @@ client.on("message", (message) => {
     // Add Jogador to Lista
     if (message.body.includes('@5511976641404 add ')) {
         
-        let nome_jogador
-        nome_jogador = message.body.replace('@5511976641404', '').trim()
         let nome_jogador = message.body.replace('@5511976641404 add ', '').trim()
         if (nome_jogador == '') return
 
         adicionarJogadorLista(nome_jogador)
         
         message.reply(getLista())
-    }
         console.log('\nAdicionou jogador a lista')
+        return
+    } 
 
 })
 
