@@ -101,7 +101,7 @@ client.on("message", (message) => {
     }
 
     // Remove specified Jogador of Lista
-    if (message.body == '@5511976641404 rmJogador ') {
+    if (message.body.includes('@5511976641404 rmJogador ')) {
         
         let nome_jogador = message.body.replace('@5511976641404 rmJogador ', '').trim()
         if (nome_jogador == '') return
