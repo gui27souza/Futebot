@@ -1,6 +1,7 @@
 # 1.3.0
     - added NaoVai lista
     - updated/added new commands
+        - help
         - showLista
         - resetLista
         - rmLastJogador

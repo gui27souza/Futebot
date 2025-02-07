@@ -40,7 +40,7 @@
 
 // Bot Setup and Schedule Functions Setup
 client.on("ready", () => {
-    console.log("Bot conectado!")
+    console.log("\nBot conectado!")
 
     // Daily/Hourly Get Lista Function
     scheduleEnviaLista(client)
