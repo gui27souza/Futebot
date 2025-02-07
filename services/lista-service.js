@@ -16,6 +16,20 @@ function adicionarJogadorLista(nome) {
     })
 
     // Update JSON file with new Lista object wit new Jogador
+// Add NaoVai to Lista
+function adicionarNaoVai(nome) {
+
+    // Get Lista object from JSON file
+    let lista = readLista()
+
+    // Add NaoVai to Lista object
+    lista.nao_vai.push({
+        nome: nome,
+    })
+
+    // Update JSON file with new Lista object with new NaoVai
+    updateLista(lista)
+}
     updateLista(lista)
 }
 
@@ -33,6 +47,13 @@ function getLista() {
     lista.jogadores.forEach(jogador => {
         template_lista += `  ${jogador.numero} - ${jogador.nome}\n`
     })
+    
+    template_lista += '\n'
+
+    // Add each Jogador to Lista template
+    lista.nao_vai.forEach(nao_vai => {
+        template_lista += ` ❌ ${nao_vai.nome} ❌\n`
+    })    
 
     // Return formatted Lista in string
     return template_lista
@@ -41,5 +62,6 @@ function getLista() {
 // Functions Exports
 module.exports = { 
     adicionarJogadorLista,
+    adicionarNaoVai,
     getLista
 }

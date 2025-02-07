@@ -83,6 +83,16 @@ client.on("message", (message) => {
         }
         updateLista(lista)
         message.reply(getLista())
+    // Add NaoVai to Lista
+    if (message.body.includes('@5511976641404 não ')) {
+        
+        let nome_naovai = message.body.replace('@5511976641404 não ', '').trim()
+        if (nome_naovai == '') return
+
+        adicionarNaoVai(nome_naovai)
+
+        message.reply(getLista())
+        console.log('\nAdicionou jogador que nao vai a lista')
         return
     }
 

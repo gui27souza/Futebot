@@ -8,9 +8,9 @@
 function limpaLista() {
     // New clean object
     let lista = {
-        "jogadores": [
-        ],
-        "numero_jogadores": 0
+        "jogadores": [],
+        "numero_jogadores": 0,
+        "nao_vai": []
     }
     // Update the JSON file with clean object
     updateLista(lista)
