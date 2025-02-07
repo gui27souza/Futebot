@@ -56,28 +56,6 @@ function removeJogador(nome) {
     return achou_removeu
 }
 
-// Remove specified NaoVai of Lista
-function removeNaoVai(nome) {
-
-    // Get Lista object from JSON file
-    let lista = readLista()
-
-    // Runs through the array of NaoVai
-    let achou_removeu = false
-    for (let i = 0; i < lista.numero_naovai; i++) {
-        if (lista.nao_vai[i].nome == nome) {
-            lista.nao_vai.splice(i, 1)
-            lista.nao_vai--
-            achou_removeu = true
-            updateLista(lista)
-            break
-        }
-    }
-
-    // Return if it was successfull or not
-    return achou_removeu
-}
-
 // Remove last Jogador from Lista
 function removeLastJogador() {
 
@@ -135,7 +113,6 @@ module.exports = {
     adicionarJogadorLista,
     adicionarNaoVai,
     removeJogador,
-    removeNaoVai,
     removeLastJogador,
     removeLastNaoVai,
     getLista

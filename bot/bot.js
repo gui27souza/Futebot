@@ -6,7 +6,7 @@
 // Functions Imports
     const { getDate } = require("../util/get-date.js")
     const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
-    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLastJogador, removeLastNaoVai, removeJogador, removeNaoVai } = require("../services/lista-service.js")
+    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLastJogador, removeLastNaoVai, removeJogador } = require("../services/lista-service.js")
 
     const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
@@ -114,23 +114,6 @@ client.on("message", (message) => {
         } else {
             message.reply(`Jogador ${nome_jogador} não esta na lista 🧐!!`)
             console.log('\n', getDate(), `  Não removeu ${nome_jogador.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
-        }
-    }
-
-    // Remove specified NaoVai of Lista
-    if (message.body.includes('@5511976641404 rmNaoVai ')) {
-        
-        let nome_naovai = message.body.replace('@5511976641404 rmNaoVai ', '').trim()
-        if (nome_naovai == '') return
-
-        let achou_removeu = removeNaoVai(nome_naovai)
-
-        if(achou_removeu) {
-            message.reply(getLista())
-            console.log('\n', getDate(), `  Removeu naovai ${nome_naovai.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}`)
-        } else {
-            message.reply(`NaoVai ${nome_naovai} não esta na lista 🧐!!`)
-            console.log('\n', getDate(), `  Não removeu ${nome_naovai.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
         }
     }
 
