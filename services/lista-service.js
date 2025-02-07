@@ -15,7 +15,10 @@ function adicionarJogadorLista(nome) {
         numero: ++lista.numero_jogadores
     })
 
-    // Update JSON file with new Lista object wit new Jogador
+    // Update JSON file with new Lista object with new Jogador
+    updateLista(lista)
+}
+
 // Add NaoVai to Lista
 function adicionarNaoVai(nome) {
 
@@ -30,6 +33,29 @@ function adicionarNaoVai(nome) {
     // Update JSON file with new Lista object with new NaoVai
     updateLista(lista)
 }
+
+// Remove last Jogador from Lista
+function removeLast() {
+
+    // Get Lista object from JSON file
+    let lista = readLista()
+
+    lista.jogadores.pop()
+    lista.numero_jogadores--
+
+    // Update JSON file with new Lista object
+    updateLista(lista)
+}
+
+// Remove last NaoVai from Lista
+function removeLastNaoVai() {
+
+    // Get Lista object from JSON file
+    let lista = readLista()
+
+    lista.nao_vai.pop()
+
+    // Update JSON file with new Lista object
     updateLista(lista)
 }
 
@@ -38,7 +64,7 @@ function getLista() {
 
     // Get next tuesday date and uses in Lista template
     let proxima_terca = getNextTuesday()
-    let template_lista = `LISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\n\n`
+    let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\n\n`
 
     // Get Lista object from JSON file
     let lista = readLista()
@@ -63,5 +89,7 @@ function getLista() {
 module.exports = { 
     adicionarJogadorLista,
     adicionarNaoVai,
+    removeLast,
+    removeLastNaoVai,
     getLista
 }

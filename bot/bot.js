@@ -5,7 +5,7 @@
 
 // Functions Imports
     const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
-    const { adicionarJogadorLista, getLista } = require("../services/lista-service.js")
+    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLast, removeLastNaoVai } = require("../services/lista-service.js")
 
     const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
@@ -83,6 +83,22 @@ client.on("message", (message) => {
         }
         updateLista(lista)
         message.reply(getLista())
+    // Remove Jogador of Lista
+    if (message.body == '@5511976641404 rmLastJogador ') {
+        removeLast()
+        message.reply(getLista())
+        console.log('\nRemoveu ultimo jogador adicionado')
+        return
+    }
+
+    // Remove NaoVai of Lista
+    if (message.body == '@5511976641404 rmLastNaoVai ') {
+        removeLastNaoVai()
+        message.reply(getLista())
+        console.log('\nRemoveu ultimo naovai adicionado')
+        return
+    }
+    
     // Add NaoVai to Lista
     if (message.body.includes('@5511976641404 não ')) {
         
