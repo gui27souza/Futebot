@@ -1,5 +1,6 @@
 {
    "jogadores": [],
    "numero_jogadores": 0,
-   "nao_vai": []
+   "nao_vai": [],
+   "numero_naovai": 0
 }

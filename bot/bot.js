@@ -87,12 +87,10 @@ client.on("message", (message) => {
     // Reset Lista Command
     if (message.body == '@5511976641404 resetLista' && message.author === '5511980640455@c.us') {
         let lista = {
-            "jogadores": [
-            ],
+            "jogadores": [],
             "numero_jogadores": 0,
-            "nao_vai": [
-
-            ]
+            "nao_vai": [],
+            "numero_naovai": 0
         }
         updateLista(lista)
         message.reply(getLista())
