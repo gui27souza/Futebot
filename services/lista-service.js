@@ -37,17 +37,15 @@ function removeJogador(nome) {
 
     let lista = readLista()
 
-    let aux = lista.jogadores[0]
     let achou_removeu = false
     for (let i = 0; i < lista.numero_jogadores; i++) {
-        if (aux.nome == nome) {
+        if (lista.jogadores[i].nome === nome) {
             lista.jogadores.splice(i, 1)
             lista.numero_jogadores--
             achou_removeu = true
             updateLista(lista)
             break
         }
-        aux = lista.jogadores[i+1]
     }
 
     return achou_removeu
