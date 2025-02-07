@@ -1,3 +1,11 @@
+# 1.3.1
+    - updated commands
+        - resetLista - only allowed user is able to use this command
+        
+    - added new commands
+        - rmJogador
+        - rmNaoVai
+
 # 1.3.0
     - added NaoVai lista
     - updated/added new commands
