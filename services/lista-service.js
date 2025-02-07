@@ -42,7 +42,8 @@ function removeJogador(nome) {
     // Runs through the array of Jogadores
     let achou_removeu = false
     for (let i = 0; i < lista.numero_jogadores; i++) {
-        if (lista.jogadores[i].nome == nome.trim()) {
+        console.log(lista.jogadores[i].nome)
+        if (lista.jogadores[i].nome == nome) {
             lista.jogadores.splice(i, 1)
             lista.numero_jogadores--
             achou_removeu = true
