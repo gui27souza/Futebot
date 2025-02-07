@@ -136,6 +136,7 @@ module.exports = {
     adicionarJogadorLista,
     adicionarNaoVai,
     removeJogador,
+    removeNaoVai,
     removeLastJogador,
     removeLastNaoVai,
     getLista
