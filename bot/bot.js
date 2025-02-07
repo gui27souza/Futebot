@@ -58,6 +58,7 @@ client.on("message", (message) => {
     // Dev test
     if (message.body == 'teste') {
         message.reply('teste')
+        console.log('teste')
         return
     }
 
@@ -66,11 +67,13 @@ client.on("message", (message) => {
     if (message.from.includes('@g.us')) {
         config.id_grupo = message.from
         updateConfig(config)
+        console.log('\nID do Grupo obtido: ', config.id_grupo)
     }
 
     // Get Lista Command
     if (message.body == '@5511976641404 showLista') {
         message.reply(getLista())
+        console.log('\nEnviou lista a pedido de usuário')
         return
     }
 
@@ -83,6 +86,7 @@ client.on("message", (message) => {
         }
         updateLista(lista)
         message.reply(getLista())
+        console.log('\nResetou lista a pedido de usuário')
     // Remove Jogador of Lista
     if (message.body == '@5511976641404 rmLastJogador ') {
         removeLast()
@@ -124,6 +128,7 @@ client.on("message", (message) => {
         
         message.reply(getLista())
     }
+        console.log('\nAdicionou jogador a lista')
 
 })
 
