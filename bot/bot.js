@@ -69,13 +69,13 @@ client.on("message", (message) => {
     }
 
     // Get Lista Command
-    if (message.body == '@5511976641404 lista') {
+    if (message.body == '@5511976641404 showLista') {
         message.reply(getLista())
         return
     }
 
     // Reset Lista Command
-    if (message.body == '@5511976641404 reset lista') {
+    if (message.body == '@5511976641404 resetLista') {
         let lista = {
             "jogadores": [
             ],
@@ -113,10 +113,11 @@ client.on("message", (message) => {
     }
 
     // Add Jogador to Lista
-    if (message.body.includes('@5511976641404')) {
+    if (message.body.includes('@5511976641404 add ')) {
         
         let nome_jogador
         nome_jogador = message.body.replace('@5511976641404', '').trim()
+        let nome_jogador = message.body.replace('@5511976641404 add ', '').trim()
         if (nome_jogador == '') return
 
         adicionarJogadorLista(nome_jogador)
