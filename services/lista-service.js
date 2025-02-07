@@ -29,6 +29,7 @@ function adicionarNaoVai(nome) {
     lista.nao_vai.push({
         nome: nome,
     })
+    lista.numero_naovai++
 
     // Update JSON file with new Lista object with new NaoVai
     updateLista(lista)
