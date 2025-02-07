@@ -162,7 +162,7 @@ client.on("message", (message) => {
         adicionarNaoVai(nome_naovai)
 
         message.reply(getLista())
-        console.log('\n', getDate(), `  Adicionou jogador ${nome_naovai} que nao vai a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
+        console.log('\n', getDate(), `  Adicionou jogador ${nome_naovai.toUpperCase()} que nao vai a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
         return
     }
 
@@ -175,7 +175,7 @@ client.on("message", (message) => {
         adicionarJogadorLista(nome_jogador)
         
         message.reply(getLista())
-        console.log('\n', getDate(), `  Adicionou jogador ${nome_jogador} a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
+        console.log('\n', getDate(), `  Adicionou jogador ${nome_jogador.toUpperCase()} a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
         return
     } 
 
