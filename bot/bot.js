@@ -82,7 +82,10 @@ client.on("message", (message) => {
         let lista = {
             "jogadores": [
             ],
-            "numero_jogadores": 0
+            "numero_jogadores": 0,
+            "nao_vai": [
+
+            ]
         }
         updateLista(lista)
         message.reply(getLista())
