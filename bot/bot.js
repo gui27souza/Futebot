@@ -57,8 +57,8 @@ client.on("message", (message) => {
     let config = readConfig()
 
     // Dev test
-    if (message.body == '@5511976641404 teste' && message.author == '@5511980640455@c.us') {
-        message.reply('teste')
+    if (message.body == '@5511976641404 teste') {
+        message.reply('teste', message.author)
         console.log('\n', getDate(), '  teste')
         return
     }
