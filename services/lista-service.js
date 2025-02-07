@@ -13,6 +13,7 @@ function adicionarJogadorLista(nome) {
     lista.jogadores.push({
         nome: nome,
     })
+    lista.numero_jogadores++
 
     // Update JSON file with new Lista object with new Jogador
     updateLista(lista)

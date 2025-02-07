@@ -106,7 +106,6 @@ client.on("message", (message) => {
         let nome_jogador = message.body.replace('@5511976641404 rmJogador ', '').trim()
         if (nome_jogador == '') return
 
-        console.log('\n'+nome_jogador+'\n')
         let achou_removeu = removeJogador(nome_jogador)
 
         if(achou_removeu) {
