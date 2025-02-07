@@ -70,6 +70,11 @@ client.on("message", (message) => {
         console.log('\nID do Grupo obtido: ', config.id_grupo)
     }
 
+    if (message.body === '@5511976641404' || message.body == '@5511976641404 help') {
+        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana\n")
+        console.log('\nEnviou help')
+    }
+
     // Get Lista Command
     if (message.body == '@5511976641404 showLista') {
         message.reply(getLista())
