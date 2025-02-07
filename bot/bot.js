@@ -58,8 +58,8 @@ client.on("message", (message) => {
 
     // Dev test
     if (message.body == '@5511976641404 teste') {
-        message.reply('teste', message.author)
-        console.log('\n', getDate(), '  teste')
+        message.reply('teste')
+        console.log('\n', getDate(), '  teste ', message.author)
         return
     }
     
