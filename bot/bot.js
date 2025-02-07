@@ -115,6 +115,8 @@ client.on("message", (message) => {
             message.reply(`Jogador ${nome_jogador} não esta na lista 🧐!!`)
             console.log('\n', getDate(), `  Não removeu ${nome_jogador.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
         }
+
+        return
     }
 
     // Remove specified NaoVai of Lista
@@ -132,6 +134,8 @@ client.on("message", (message) => {
             message.reply(`NaoVai ${nome_naovai} não esta na lista 🧐!!`)
             console.log('\n', getDate(), `  Não removeu ${nome_naovai.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
         }
+
+        return
     }
 
     // Remove last Jogador of Lista
