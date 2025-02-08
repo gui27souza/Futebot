@@ -44,6 +44,6 @@ JavaScript, NodeJS, whatsapp-web.js, other NodeJS modules, JSON for data
     ```
         client.on("qr", (qr) => {
             console.log("Escaneie o QR Code abaixo:")
-            qrcode.generate(qr, { small: false })
+            qrcode.generate(qr, { small: true })
         })
     ```
