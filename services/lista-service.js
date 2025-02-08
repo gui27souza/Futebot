@@ -126,7 +126,9 @@ function getLista() {
     // Add each Jogador to Lista template
     lista.nao_vai.forEach(nao_vai => {
         template_lista += ` ${nao_vai.nome} ❌\n`
-    })    
+    })
+
+    template_lista += '\n@Futebot add nome - adiciona o nome à lista\n@Futebot não nome - adiciona o nome aos ausentes'
 
     // Return formatted Lista in string
     return template_lista
