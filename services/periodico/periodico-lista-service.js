@@ -3,6 +3,7 @@
 
     const { readConfig } = require('../../util/json-handler')
     const { getLista } = require('../lista-service')
+    const { getDate } = require('../../util/get-date')
 //
 
 // Send Lista to group chat
@@ -13,7 +14,7 @@ function enviarLista(client) {
     const mensagem = getLista()
     // Send formatted Lista to group chat
     client.sendMessage(config.id_grupo, mensagem)
-    console.log('Enviou a Lista no horario marcado')
+    console.log('\n', getDate(), '  Enviou a Lista no horario marcado')
 }
 
 // Functions Exports

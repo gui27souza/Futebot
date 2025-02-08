@@ -2,6 +2,7 @@
     const schedule = require('node-schedule')
     const { readConfig, readLista } = require('../../util/json-handler')
     const { getNextTuesday } = require('../../util/get-next-tuesday')
+    const { getDate } = require('../../util/get-date')
 // 
 
 // Draws Jogadores on Times based on Lista
@@ -58,7 +59,7 @@ function sorteiaTimes(client) {
     // Send formatted Lista to group chat
     client.sendMessage(config.id_grupo, template_times)
 
-    console.log('Fez o Sorteio Semanal dos times\n', template_times)
+    console.log('\n', getDate(),'  Fez o Sorteio Semanal dos times\n', template_times)
 }
 
 // Functions Exports

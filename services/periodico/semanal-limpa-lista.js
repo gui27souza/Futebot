@@ -2,6 +2,7 @@
     const schedule = require('node-schedule')
 
     const { updateLista } = require('../../util/json-handler')
+    const { getDate } = require('../../util/get-date')
 // 
 
 // Resets Lista
@@ -16,7 +17,7 @@ function limpaLista() {
     // Update the JSON file with clean object
     updateLista(lista)
 
-    console.log('Fez a limpeza semanal da lista')
+    console.log('\n', getDate(), '  Fez a limpeza semanal da lista')
 }
 
 // Functions Exports
