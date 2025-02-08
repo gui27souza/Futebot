@@ -35,7 +35,7 @@ To use the commands, the user must ping the bot and use the correct word in the 
 
 ## Technologies used
 
-JavaScript, NodeJS, whatsapp-web.js, other NodeJS modules, JSON for data
+JavaScript, NodeJS, whatsapp-web.js, JSON for data and other NodeJS modules (fs, node-schedule, path, qrcode-terminal)
 
 ## FAQs
 
