@@ -1,3 +1,6 @@
 {
-   "id_grupo": "none"
+   "id_grupo": "none",
+   "bot_number": null,
+   "admin_number": [],
+   "matchdays": []
 }
