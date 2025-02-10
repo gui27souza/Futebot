@@ -1,6 +1,6 @@
 // Functions Imports
     const { getNextMatchday } = require('../util/get-next-matchday.js')
-    const { readLista, updateLista } = require('../util/json-handler.js')
+    const { readLista, updateLista, readConfig } = require('../util/json-handler.js')
 // 
 
 // Add Jogador to Lista
@@ -108,12 +108,13 @@ function removeLastNaoVai() {
 // Get formatted Lista with Jogadores in string
 function getLista() {
 
+    // Get Config and Lista objects from JSON files
+    const config = readConfig()
+    let lista = readLista()
+
     // Get next Matchday date and uses in Lista template
     let proxima_terca = getNextMatchday()
-    let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\nDIA DE PAGAR A QUADRA\nPIX (11)97494-3376\n\nTIME - 21:00 às 23:00\n\n`
-
-    // Get Lista object from JSON file
-    let lista = readLista()
+    let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\n${config.message_template.head}\n\n`
 
     // Add each Jogador to Lista template
     let i = 1
@@ -121,14 +122,14 @@ function getLista() {
         template_lista += `  ${i++} - ${jogador.nome}\n`
     })
     
-    template_lista += '\n❌ AUSENTES ❌\n'
+    template_lista += '\n'+config.template_lista.nao_vai+'\n'
 
     // Add each Jogador to Lista template
     lista.nao_vai.forEach(nao_vai => {
         template_lista += ` ${nao_vai.nome} ❌\n`
     })
 
-    template_lista += '\n@Futebot add nome - adiciona o nome à lista\n@Futebot não nome - adiciona o nome aos ausentes'
+    template_lista += '\n'+config.template_lista.bottom
 
     // Return formatted Lista in string
     return template_lista
