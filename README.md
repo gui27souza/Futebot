@@ -2,9 +2,6 @@
 
 Futebot is a simple bot that helps to manage soccer matches between friends!
 
-- **DISCLAIMER** - for now, the app was made for personal use only, so if _you_ want to use for your soccer matches, you should edit some infos in the code, for example, the list template, the bot telephone number, the dates and hours of the periodic functions and other things. But this will be updated in the future. Thanks for the comprehension. _Enjoy!!!_
-
-
 ## What can it do ?
 
 - Lists players that confirmed presence in the next match and players that confirmed their absence
@@ -15,6 +12,14 @@ Futebot is a simple bot that helps to manage soccer matches between friends!
 
 - Clone the repo to your machine
 - In the cloned dir terminal, type  `npm i`  so that the needed packs are installed
+- Go to data/config.json
+    - Insert the telephone number your bot is going to use with the country code and ddd 
+    <br>Example for BR: ```5511999999999```
+    - It's recommended to insert at least one telephone number to the bot admin attribute in the same format of the bot number, but adding @c.us at the end 
+    <br>Example: ```5511999999999@c.us```
+    - Insert the day of the week the match will happen in ```matchday```.
+    <br>Example: Sunday is ```1```, Tuesday is ```3```, Friday is ```6```
+    - You can also change the list template, but that's optional
 - Start the app with  `npm start`
 - On your first time using, you will be required to scan a QR code to connect the bot to the telephone number you will use for it
 - After authenticating, put the bot in your soccer group chat
@@ -26,11 +31,14 @@ To use the commands, the user must ping the bot and use the correct word in the 
 
 - add [player] - confirms player presence in the next match
 - não [player] - confirms player absence in the next match
+<br><br>
 - showLista - sends the list in the chat
+<br><br>
 - rmJogador [player] - removes the specified player of the list of confirmed players
 - rmNaoVai [player] - removes the specified player of the list of absent players
 - rmLastJogador [player] - removes last player added to the confirmed list
 - rmLastNaoVai [player] - removes last player added to the absent list
+<br><br>
 - resetLista - resets the weekly list (bot admin only)
 
 ## Technologies used
