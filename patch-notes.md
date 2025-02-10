@@ -1,3 +1,6 @@
+# 1.3.2
+    - bug issues fixed
+
 # 1.3.1
     - updated commands
         - resetLista - only allowed user is able to use this command
