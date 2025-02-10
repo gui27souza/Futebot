@@ -4,4 +4,10 @@
    "admin_number": [],
    "matchdays": []
    "matchday": null
+   "message_template": {
+      "head": null,
+      "jogadores": null,
+      "nao_vai": null,
+      "bottom": null
+   }
 }
