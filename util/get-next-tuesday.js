@@ -8,7 +8,7 @@ function getNextMatchday() {
     const today = new Date()
     const dayOfWeek = today.getDay()
 
-    let daysUntilMatchday = (parseInt(config.matchday) - dayOfWeek + 7) % 7
+    let daysUntilMatchday = (parseInt(config.matchday-1) - dayOfWeek + 7) % 7
 
     const nextMatchday = new Date(today)
     nextMatchday.setDate(today.getDate() + daysUntilMatchday)

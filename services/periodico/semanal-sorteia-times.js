@@ -74,5 +74,5 @@ module.exports = (client) => {
 
     // Every Matchday at 20:55
     const config = readConfig()
-    schedule.scheduleJob(`55 20 * * ${config.matchday}`, () => sorteiaTimes(client))
+    schedule.scheduleJob(`55 20 * * ${config.matchday-1}`, () => sorteiaTimes(client))
 }
