@@ -33,6 +33,10 @@ function sorteiaTimes(client) {
 
     // Defines the number of Times and Jogadores on Times based on total of Jogadores
     switch (true) {
+        case (numero_jogadores < 12):
+            client.sendMessage(config.id_grupo, "Infelizmente hoje não tem fut 😭"); return; 
+        break
+        
         case (numero_jogadores == 12): numero_times = 2; break
         case (numero_jogadores == 15): numero_times = 3; jogadores_por_time = 5; break        
         case (numero_jogadores == 20): numero_times = 4; jogadores_por_time = 5; break        
@@ -41,7 +45,7 @@ function sorteiaTimes(client) {
         case (numero_jogadores > 24 && numero_jogadores <= 30): numero_times = 5; break
     
         default:
-
+            client.sendMessage(config.id_grupo, "Infelizmente hoje não tem fut 😭"); return;
         break
     }
 
