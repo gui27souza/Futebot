@@ -57,7 +57,7 @@ client.on("message", (message) => {
     let config = readConfig()
 
     // Stores the ID of the group chat, used for the scheduled functions
-    if (config.id_grupo == 'none')
+    if (config.id_grupo === null)
     if (message.from.includes('@g.us')) {
         config.id_grupo = message.from
         updateConfig(config)
@@ -65,28 +65,28 @@ client.on("message", (message) => {
     }
 
     // Dev test
-    if (message.body == '@5511976641404 teste' && message.author === '5511980640455@c.us') {
+    if (message.body == `@${config.bot_number} teste` && config.admin_number.includes(message.author)) {
         message.reply('teste')
         console.log('\n', getDate(), '  teste ')
         return
     }
 
     // Get Commands list
-    if (message.body == '@5511976641404 help') {
+    if (message.body == `@${config.bot_number} help`) {
         message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmJogador - apaga o jogador\nrmNaoVai - remove o que não vai\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana (admin only)\n")
         console.log('\n', getDate(), '  Enviou help a pedido de usuario ', message._data.notifyName.toUpperCase())
         return
     }
 
     // Get Lista Command
-    if (message.body == '@5511976641404 showLista') {
+    if (message.body == `@${config.bot_number} showLista`) {
         message.reply(getLista())
         console.log('\n', getDate(), '  Enviou lista a pedido de usuário ', message._data.notifyName.toUpperCase())
         return
     }
 
     // Reset Lista Command
-    if (message.body == '@5511976641404 resetLista' && message.author === '5511980640455@c.us') {
+    if (message.body == `@${config.bot_number} resetLista` && config.admin_number.includes(message.author)) {
         let lista = {
             "jogadores": [],
             "numero_jogadores": 0,
@@ -100,9 +100,9 @@ client.on("message", (message) => {
     }
 
     // Remove specified Jogador of Lista
-    if (message.body.includes('@5511976641404 rmJogador ')) {
+    if (message.body.includes(`@${config.bot_number} rmJogador `)) {
         
-        let nome_jogador = message.body.replace('@5511976641404 rmJogador ', '').trim()
+        let nome_jogador = message.body.replace(`@${config.bot_number} rmJogador `, '').trim()
         if (nome_jogador == '') return
 
         let achou_removeu = removeJogador(nome_jogador)
@@ -119,9 +119,9 @@ client.on("message", (message) => {
     }
 
     // Remove specified NaoVai of Lista
-    if (message.body.includes('@5511976641404 rmNaoVai ')) {
+    if (message.body.includes(`@${config.bot_number} rmNaoVai `)) {
         
-        let nome_naovai = message.body.replace('@5511976641404 rmNaoVai ', '').trim()
+        let nome_naovai = message.body.replace(`@${config.bot_number} rmNaoVai `, '').trim()
         if (nome_naovai == '') return
 
         let achou_removeu = removeNaoVai(nome_naovai)
@@ -138,7 +138,7 @@ client.on("message", (message) => {
     }
 
     // Remove last Jogador of Lista
-    if (message.body == '@5511976641404 rmLastJogador') {
+    if (message.body == `@${config.bot_number} rmLastJogador`) {
         removeLastJogador()
         message.reply(getLista())
         console.log('\n', getDate(), '  Removeu ultimo jogador adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
@@ -146,7 +146,7 @@ client.on("message", (message) => {
     }
 
     // Remove last NaoVai of Lista
-    if (message.body == '@5511976641404 rmLastNaoVai') {
+    if (message.body == `@${config.bot_number} rmLastNaoVai`) {
         removeLastNaoVai()
         message.reply(getLista())
         console.log('\n', getDate(), '  Removeu ultimo naovai adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
@@ -154,9 +154,9 @@ client.on("message", (message) => {
     }
     
     // Add NaoVai to Lista
-    if (message.body.includes('@5511976641404 não ')) {
+    if (message.body.includes(`@${config.bot_number} não `)) {
         
-        let nome_naovai = message.body.replace('@5511976641404 não ', '').trim()
+        let nome_naovai = message.body.replace(`@${config.bot_number} não `, '').trim()
         if (nome_naovai == '') return
 
         adicionarNaoVai(nome_naovai)
@@ -167,9 +167,9 @@ client.on("message", (message) => {
     }
 
     // Add Jogador to Lista
-    if (message.body.includes('@5511976641404 add ')) {
+    if (message.body.includes(`@${config.bot_number} add `)) {
         
-        let nome_jogador = message.body.replace('@5511976641404 add ', '').trim()
+        let nome_jogador = message.body.replace(`@${config.bot_number} add `, '').trim()
         if (nome_jogador == '') return
 
         adicionarJogadorLista(nome_jogador)
