@@ -1,7 +1,7 @@
 // Module and Functions Imports
     const schedule = require('node-schedule')
     const { readConfig, readLista } = require('../../util/json-handler')
-    const { getNextTuesday } = require('../../util/get-next-tuesday')
+    const { getNextMatchday } = require('../../util/get-next-matchday')
     const { getDate } = require('../../util/get-date')
 // 
 
@@ -26,8 +26,8 @@ function sorteiaTimes(client) {
     }
 
     // Creates template for drawed Times
-    let data = getNextTuesday()
-    let template_times = `TIMES ${data.dia}/${data.mes}/${data.ano}\n\n\n`
+    let matchday = getNextMatchday()
+    let template_times = `TIMES ${matchday.dia}/${matchday.mes}/${matchday.ano}\n\n\n`
     let numero_times = 0
     let jogadores_por_time = 6
 
@@ -72,6 +72,7 @@ module.exports = (client) => {
     // Test
     // schedule.scheduleJob('* * * * *', () => sorteiaTimes(client))
 
-    // Every Tuesday at 20:55
-    schedule.scheduleJob('55 20 * * 3', () => sorteiaTimes(client))
+    // Every Matchday at 20:55
+    const config = readConfig()
+    schedule.scheduleJob(`55 20 * * ${config.matchday}`, () => sorteiaTimes(client))
 }

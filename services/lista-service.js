@@ -1,5 +1,5 @@
 // Functions Imports
-    const { getNextTuesday } = require('../util/get-next-tuesday.js')
+    const { getNextMatchday } = require('../util/get-next-matchday.js')
     const { readLista, updateLista } = require('../util/json-handler.js')
 // 
 
@@ -108,8 +108,8 @@ function removeLastNaoVai() {
 // Get formatted Lista with Jogadores in string
 function getLista() {
 
-    // Get next tuesday date and uses in Lista template
-    let proxima_terca = getNextTuesday()
+    // Get next Matchday date and uses in Lista template
+    let proxima_terca = getNextMatchday()
     let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\nDIA DE PAGAR A QUADRA\nPIX (11)97494-3376\n\nTIME - 21:00 às 23:00\n\n`
 
     // Get Lista object from JSON file
