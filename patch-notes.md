@@ -1,5 +1,9 @@
 # Version 2
 
+## 2.0.1
+    - Added new command
+        - drawTimes
+
 ## 2.0.0
     - The user now can change settings without changing the main code itself using the config.json
     - It allows to choose:

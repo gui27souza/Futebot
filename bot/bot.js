@@ -99,6 +99,12 @@ client.on("message", (message) => {
         return
     }
 
+    if (message.body == `@${config.bot_number} drawTimes` && config.admin_number.includes(message.author)) {
+        sorteiaTimes(client, message.from)
+        return
+    }
+
+
     // Remove specified Jogador of Lista
     if (message.body.includes(`@${config.bot_number} rmJogador `)) {
         
