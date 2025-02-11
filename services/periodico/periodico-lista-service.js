@@ -23,8 +23,8 @@ module.exports = (client) => {
     // Test
     // schedule.scheduleJob('* * * * *', () => enviarLista(client))
 
-    // Tuesday each 1h (08:00 - 20:00)
-    schedule.scheduleJob('* 8-20/1 * * 2', () => enviarLista(client))
+    // Tuesday each 2h (08:00 - 20:00)
+    schedule.scheduleJob('0 8-20/2 * * 2', () => enviarLista(client))
 
     // Sunday and Monday each 4h (08:00 - 20:00)
     schedule.scheduleJob('0 8-20/4 * * 0,1', () => enviarLista(client))
