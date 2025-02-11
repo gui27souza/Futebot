@@ -1,6 +1,6 @@
 // Functions Imports
     const { getNextMatchday } = require('../util/get-next-matchday.js')
-    const { getDate } = require('../../util/get-date')
+    const { getDate } = require('../util/get-date.js')
     const { readLista, updateLista, readConfig } = require('../util/json-handler.js')
 // 
 
