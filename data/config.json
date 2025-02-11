@@ -2,7 +2,6 @@
    "id_grupo": "none",
    "bot_number": null,
    "admin_number": [],
-   "matchdays": []
    "matchday": null
    "message_template": {
       "head": null,
