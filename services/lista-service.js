@@ -114,8 +114,8 @@ function getLista() {
     let lista = readLista()
 
     // Get next Matchday date and uses in Lista template
-    let proxima_terca = getNextMatchday()
-    let template_lista = `\nLISTA ${proxima_terca.dia}/${proxima_terca.mes}/${proxima_terca.ano}\n${config.message_template.head}\n\n`
+    let matchday = getNextMatchday()
+    let template_lista = `\nLISTA ${matchday.dia}/${matchday.mes}/${matchday.ano}\n${config.message_template.head}\n\n`
 
     // Add each Jogador to Lista template
     let i = 1
@@ -147,7 +147,6 @@ function sorteiaTimes(client, group_id) {
     // Gets necessary data
     let lista = readLista()
     let lista_jogadores = lista.jogadores
-    console.log(lista_jogadores)
     const numero_jogadores = lista.numero_jogadores
 
     // Randomize array of Jogadores
@@ -160,14 +159,16 @@ function sorteiaTimes(client, group_id) {
 
     // Creates template for drawed Times
     let matchday = getNextMatchday()
-    let template_times = `TIMES ${matchday.dia}/${matchday.mes}/${matchday.ano}\n\n\n`
+    let template_times = `TIMES ${matchday.dia}/${matchday.mes}/${matchday.ano}\n\n`
     let numero_times = 0
     let jogadores_por_time = 6
 
     // Defines the number of Times and Jogadores on Times based on total of Jogadores
     switch (true) {
         case (numero_jogadores < 12):
-            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭"); return; 
+            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭")
+            console.log('\n', getDate(),'  Não fez o Sorteio dos times: SEM JOGADORES SUFICIENTES\n', template_times)
+            return
         break
         
         case (numero_jogadores == 12): numero_times = 2; break
@@ -178,13 +179,15 @@ function sorteiaTimes(client, group_id) {
         case (numero_jogadores > 24 && numero_jogadores <= 30): numero_times = 5; break
     
         default:
-            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭"); return;
+            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭")
+            console.log('\n', getDate(),'    Não fez o Sorteio dos times: SEM JOGADORES SUFICIENTES\n', template_times)
+            return
         break
     }
 
     // Creates the final Lista with drawed Times
     for (let i = 1, jogador_index = 0; i<=numero_times; i++) {
-        template_times += `  TIME ${i}\n\n`
+        template_times += `  *TIME ${i}*\n\n`
         for (let j = 1; j <= jogadores_por_time; j++) {
             console.log(`jogador ${lista_jogadores[jogador_index].nome} foi`)
             template_times += `   ${j} - ${lista_jogadores[jogador_index].nome||''}\n`
