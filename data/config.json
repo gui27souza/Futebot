@@ -2,11 +2,11 @@
    "id_grupo": null,
    "bot_number": null,
    "admin_number": [],
-   "matchday": null,
+   "matchday": 0,
    "message_template": {
-      "head": null,
-      "jogadores": null,
-      "nao_vai": null,
-      "bottom": null
+      "head": "",
+      "jogadores": "",
+      "nao_vai": "",
+      "bottom": ""
    }
 }
