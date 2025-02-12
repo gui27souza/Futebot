@@ -142,6 +142,7 @@ function sorteiaTimes(client, group_id) {
 
     // Get group chat id
     const config = readConfig()
+    if (!group_id) group_id = config.id_grupo
 
     // Gets necessary data
     let lista = readLista()
@@ -166,7 +167,7 @@ function sorteiaTimes(client, group_id) {
     // Defines the number of Times and Jogadores on Times based on total of Jogadores
     switch (true) {
         case (numero_jogadores < 12):
-            client.sendMessage(config.id_grupo, "Infelizmente hoje não tem fut 😭"); return; 
+            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭"); return; 
         break
         
         case (numero_jogadores == 12): numero_times = 2; break
@@ -177,7 +178,7 @@ function sorteiaTimes(client, group_id) {
         case (numero_jogadores > 24 && numero_jogadores <= 30): numero_times = 5; break
     
         default:
-            client.sendMessage(config.id_grupo, "Infelizmente hoje não tem fut 😭"); return;
+            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭"); return;
         break
     }
 
@@ -194,7 +195,6 @@ function sorteiaTimes(client, group_id) {
 
     console.log('\n', getDate(),'  Fez o Sorteio dos times\n', template_times)
 
-    if (!group_id) group_id = config.id_grupo
     // Send formatted Lista to group chat
     client.sendMessage(group_id, template_times)
 }
