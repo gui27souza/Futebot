@@ -74,7 +74,7 @@ client.on("message", (message) => {
 
     // Get Commands list
     if (message.body == `@${config.bot_number} help`) {
-        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmJogador - apaga o jogador\nrmNaoVai - remove o que não vai\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana (admin only)\ndrawTimes - refaz o sorteio (admin only)\n")
+        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nremoveJogador - remove o jogador\nremoveNaoVai - remove o que não vai\nremoveLastJogador - remove o último nome da lista\nremoveLastNaoVai - remove o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana (admin only)\ndrawTimes - refaz o sorteio (admin only)\n")
         console.log('\n', getDate(), '  Enviou help a pedido de usuario ', message._data.notifyName.toUpperCase())
         return
     }
@@ -107,7 +107,7 @@ client.on("message", (message) => {
 
 
     // Remove specified Jogador of Lista
-    if (message.body.includes(`@${config.bot_number} rmJogador `)) {
+    if (message.body.includes(`@${config.bot_number} removeJogador `)) {
         
         let nome_jogador = message.body.replace(`@${config.bot_number} rmJogador `, '').trim()
         if (nome_jogador == '') return
@@ -126,7 +126,7 @@ client.on("message", (message) => {
     }
 
     // Remove specified NaoVai of Lista
-    if (message.body.includes(`@${config.bot_number} rmNaoVai `)) {
+    if (message.body.includes(`@${config.bot_number} removeNaoVai `)) {
         
         let nome_naovai = message.body.replace(`@${config.bot_number} rmNaoVai `, '').trim()
         if (nome_naovai == '') return
@@ -145,7 +145,7 @@ client.on("message", (message) => {
     }
 
     // Remove last Jogador of Lista
-    if (message.body == `@${config.bot_number} rmLastJogador`) {
+    if (message.body == `@${config.bot_number} removeLastJogador`) {
         removeLastJogador()
         message.reply(getLista())
         console.log('\n', getDate(), '  Removeu ultimo jogador adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
@@ -153,7 +153,7 @@ client.on("message", (message) => {
     }
 
     // Remove last NaoVai of Lista
-    if (message.body == `@${config.bot_number} rmLastNaoVai`) {
+    if (message.body == `@${config.bot_number} removeLastNaoVai`) {
         removeLastNaoVai()
         message.reply(getLista())
         console.log('\n', getDate(), '  Removeu ultimo naovai adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
