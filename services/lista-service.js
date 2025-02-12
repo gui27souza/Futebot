@@ -123,14 +123,15 @@ function getLista() {
         template_lista += `  ${i++} - ${jogador.nome}\n`
     })
     
-    template_lista += '\n'+config.template_lista.nao_vai+'\n'
+    template_lista += '\n'+config.message_template.nao_vai+'\n'
+
 
     // Add each Jogador to Lista template
     lista.nao_vai.forEach(nao_vai => {
         template_lista += ` ${nao_vai.nome} ❌\n`
     })
 
-    template_lista += '\n'+config.template_lista.bottom
+    template_lista += '\n'+config.message_template.bottom
 
     // Return formatted Lista in string
     return template_lista
@@ -191,11 +192,11 @@ function sorteiaTimes(client, group_id) {
         template_times += `\n`
     }
 
+    console.log('\n', getDate(),'  Fez o Sorteio dos times\n', template_times)
+
     if (!group_id) group_id = config.id_grupo
     // Send formatted Lista to group chat
     client.sendMessage(group_id, template_times)
-
-    console.log('\n', getDate(),'  Fez o Sorteio dos times\n', template_times)
 }
 
 // Functions Exports
