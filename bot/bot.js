@@ -74,7 +74,7 @@ client.on("message", (message) => {
 
     // Get Commands list
     if (message.body == `@${config.bot_number} help`) {
-        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmJogador - apaga o jogador\nrmNaoVai - remove o que não vai\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana (admin only)\n")
+        message.reply("*COMANDOS* \n\nadd - adiciona o nome na lista\nnão - adiciona o nome que não vai\n\nshowLista - Mostra a lista da semana\n\nrmJogador - apaga o jogador\nrmNaoVai - remove o que não vai\nrmLastJogador - apaga o último nome da lista\nrmLastNaoVai - apaga o último nome da lista de quem não vai\n\nresetLista - reseta a lista da semana (admin only)\ndrawTimes - refaz o sorteio (admin only)\n")
         console.log('\n', getDate(), '  Enviou help a pedido de usuario ', message._data.notifyName.toUpperCase())
         return
     }
