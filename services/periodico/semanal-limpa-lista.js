@@ -22,6 +22,8 @@ function limpaLista() {
 
 // Functions Exports
 module.exports = (client) => {
-    // Every Wednesday at 00:00
-    schedule.scheduleJob('0 0 * * 4', limpaLista)
+    // Every following matchay day at 00:00
+    const config = readConfig()
+    if (config.matchday == 7) config.matchday = 0 
+    schedule.scheduleJob(`0 0 * * ${config.matchday}`, limpaLista)
 }
