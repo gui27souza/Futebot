@@ -1,8 +1,8 @@
 {
+   "id_grupo": null,
    "bot_number": null,
    "admin_number": [],
-   "matchday": null
-   "id_grupo": null,
+   "matchday": null,
    "message_template": {
       "head": null,
       "jogadores": null,
