@@ -1,7 +1,7 @@
 # Version 2
 
 ## 2.0.1
-    - Added new command
+    - Added new command for bot admins
         - drawTimes
 
 ## 2.0.0

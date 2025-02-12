@@ -29,6 +29,9 @@ Futebot is a simple bot that helps to manage soccer matches between friends!
 
 To use the commands, the user must ping the bot and use the correct word in the group chat
 
+#### User Commands
+- help - displays the commands
+<br><br>
 - add [player] - confirms player presence in the next match
 - não [player] - confirms player absence in the next match
 <br><br>
@@ -38,8 +41,10 @@ To use the commands, the user must ping the bot and use the correct word in the 
 - rmNaoVai [player] - removes the specified player of the list of absent players
 - rmLastJogador [player] - removes last player added to the confirmed list
 - rmLastNaoVai [player] - removes last player added to the absent list
-<br><br>
-- resetLista - resets the weekly list (bot admin only)
+
+#### Bot Admin Commands
+- resetLista - resets the weekly list
+- drawTimes - draw Times of Jogadores
 
 ## Technologies used
 
