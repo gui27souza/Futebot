@@ -6,7 +6,7 @@
 // Functions Imports
     const { getDate } = require("../util/get-date.js")
     const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
-    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLastJogador, removeLastNaoVai, removeJogador, removeNaoVai } = require("../services/lista-service.js")
+    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLastJogador, removeLastNaoVai, removeJogador, removeNaoVai, sorteiaTimes } = require("../services/lista-service.js")
 
     const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
@@ -55,6 +55,7 @@ client.on("ready", () => {
 client.on("message", (message) => {
     
     let config = readConfig()
+    // console.log(config)
 
     // Stores the ID of the group chat, used for the scheduled functions
     if (config.id_grupo === null)
