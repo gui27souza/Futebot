@@ -37,10 +37,10 @@ To use the commands, the user must ping the bot and use the correct word in the 
 <br><br>
 - showLista - sends the list in the chat
 <br><br>
-- rmJogador [player] - removes the specified player of the list of confirmed players
-- rmNaoVai [player] - removes the specified player of the list of absent players
-- rmLastJogador [player] - removes last player added to the confirmed list
-- rmLastNaoVai [player] - removes last player added to the absent list
+- removeJogador [player] - removes the specified player of the list of confirmed players
+- removeNaoVai [player] - removes the specified player of the list of absent players
+- removeLastJogador - removes last player added to the confirmed list
+- removeLastNaoVai - removes last player added to the absent list
 
 #### Bot Admin Commands
 - resetLista - resets the weekly list

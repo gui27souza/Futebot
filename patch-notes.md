@@ -1,5 +1,12 @@
 # Version 2
 
+## 2.0.2
+    - Updated commands names
+        - rmJogador -> removeJogador
+        - rmNaoVai -> removeNaoVai
+        - rmLastJogador -> removeLastJogador
+        - rmLastNaoVai -> removeLastNaoVai
+
 ## 2.0.1
     - Added new command for bot admins
         - drawTimes
