@@ -45,6 +45,7 @@ client.on("ready", () => {
     console.log('\n', getDate(), '  Bot conectado!')
 
     let config = readConfig()
+    delete config.message_template
     console.log('\n', getDate())
     console.log(prettyjson.render(config, {
         noAlign: true,
@@ -60,17 +61,17 @@ client.on("ready", () => {
     // Daily/Hourly Get Lista Function
     console.log('\n', getDate(), '  Chamando scheduleEnviaLista...')
     scheduleEnviaLista(client)
-    console.log('', getDate(), '  Chamado com sucesso!')
+    console.log('', getDate(), '  scheduleEnviaLista chamado com sucesso!')
 
     // Weekly Clear Lista Function
     console.log('\n', getDate(), '  Chamando scheduleLimpaLista...')
     scheduleLimpaLista(client)
-    console.log('', getDate(), '  Chamado com sucesso!')
+    console.log('', getDate(), '  scheduleLimpaLista chamado com sucesso!')
 
     // Weekly Draw Times from Lista
     console.log('\n', getDate(), '  Chamando scheduleSorteiaTimes...')
     scheduleSorteiaTimes(client)
-    console.log('', getDate(), '  Chamado com sucesso!')
+    console.log('', getDate(), '  scheduleSorteiaTimes chamado com sucesso!')
 
 })
 
