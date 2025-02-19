@@ -7,10 +7,8 @@
 // Functions Exports
 module.exports = (client) => {
 
-    // Test
-    // schedule.scheduleJob('* * * * *', () => sorteiaTimes(client))
-
-    // Every Matchday at 20:55
     const config = readConfig()
-    schedule.scheduleJob(`55 20 * * ${config.matchday-1}`, () => sorteiaTimes(client))
+
+    // Every Matchday
+    schedule.scheduleJob(`55 20 * * ${parseInt(config.matchday)-1}`, () => sorteiaTimes(client, config.id_grupo))
 }
