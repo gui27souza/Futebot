@@ -73,16 +73,23 @@ client.on("ready", () => {
 })
 
 // Message Listener
-client.on("message", (message) => {
+client.on("message", async (message) => {
     
     let config = readConfig()
     
     if (message.mentionedIds.includes(`${config.bot_number}@c.us`)) {
+        
+        const chat = await message.getChat()
+        let group_name = chat.name
+        
+        // console.log(chat)
         // console.log(message)
+
         console.log('\n\n-----\n\n\n', getDate(), '  Mensagem recebida:')
         console.log('    ',message.body)
         console.log('   Autor:',message._data.notifyName)
         console.log('   Numero:', message.author)
+        console.log('   Grupo:', group_name)
     }
 
     // Stores the ID of the group chat, used for the scheduled functions
