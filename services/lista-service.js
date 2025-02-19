@@ -140,6 +140,8 @@ function getLista() {
 // Draws Jogadores on Times based on Lista
 function sorteiaTimes(client, group_id) {
 
+    console.log('\n', getDate(), 'Iniciando sorteio de times\n')
+
     // Get group chat id
     const config = readConfig()
     if (!group_id) group_id = config.id_grupo
@@ -189,14 +191,19 @@ function sorteiaTimes(client, group_id) {
     for (let i = 1, jogador_index = 0; i<=numero_times; i++) {
         template_times += `  *TIME ${i}*\n\n`
         for (let j = 1; j <= jogadores_por_time; j++) {
-            console.log(`jogador ${lista_jogadores[jogador_index].nome} foi`)
-            template_times += `   ${j} - ${lista_jogadores[jogador_index].nome||''}\n`
-            jogador_index++
+            if (lista_jogadores[jogador_index] == undefined) {
+                template_times += `   ${j} -\n`
+                console.log(`    Espaço livre incluido no time ${i}`)
+            } else {
+                console.log(`    Jogador ${lista_jogadores[jogador_index].nome} foi incluido no time ${i}`)
+                template_times += `   ${j} - ${lista_jogadores[jogador_index].nome||''}\n`
+                jogador_index++
+            }
         }
         template_times += `\n`
     }
 
-    console.log('\n', getDate(),'  Fez o Sorteio dos times\n', template_times)
+    console.log('\n', getDate(),'  Fez o Sorteio dos times\n\n', template_times)
 
     // Send formatted Lista to group chat
     client.sendMessage(group_id, template_times)
