@@ -1,6 +1,6 @@
 {
   "name": "futebot",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "main": "bot/bot.js",
   "scripts": {
     "start": "node bot/bot.js | tee -a bot-logs.log"

@@ -1,5 +1,8 @@
 # Version 2
 
+## 2.0.4
+    - Logs update
+
 ## 2.0.3
     - Bug/Issues fix
     - Logs update
