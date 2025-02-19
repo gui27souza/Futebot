@@ -109,7 +109,7 @@ client.on("message", (message) => {
     // Remove specified Jogador of Lista
     if (message.body.includes(`@${config.bot_number} removeJogador `)) {
         
-        let nome_jogador = message.body.replace(`@${config.bot_number} rmJogador `, '').trim()
+        let nome_jogador = message.body.replace(`@${config.bot_number} removeJogador `, '').trim()
         if (nome_jogador == '') return
 
         let achou_removeu = removeJogador(nome_jogador)
@@ -128,7 +128,7 @@ client.on("message", (message) => {
     // Remove specified NaoVai of Lista
     if (message.body.includes(`@${config.bot_number} removeNaoVai `)) {
         
-        let nome_naovai = message.body.replace(`@${config.bot_number} rmNaoVai `, '').trim()
+        let nome_naovai = message.body.replace(`@${config.bot_number} removeNaoVai `, '').trim()
         if (nome_naovai == '') return
 
         let achou_removeu = removeNaoVai(nome_naovai)
