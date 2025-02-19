@@ -1,7 +1,7 @@
 // Module and Functions Imports
     const schedule = require('node-schedule')
 
-    const { updateLista } = require('../../util/json-handler')
+    const { updateLista, readConfig } = require('../../util/json-handler')
     const { getDate } = require('../../util/get-date')
 // 
 
@@ -25,5 +25,5 @@ module.exports = (client) => {
     // Every following matchay day at 00:00
     const config = readConfig()
     if (config.matchday == 7) config.matchday = 0 
-    schedule.scheduleJob(`0 0 * * ${config.matchday}`, limpaLista)
+    schedule.scheduleJob(`0 0 0 * * ${parseInt(config.matchday)}`, () => limpaLista())
 }
