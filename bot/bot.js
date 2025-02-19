@@ -79,7 +79,14 @@ client.on("ready", () => {
 client.on("message", (message) => {
     
     let config = readConfig()
-    // console.log(config)
+    
+    if (message.mentionedIds.includes(`${config.bot_number}@c.us`)) {
+        // console.log(message)
+        console.log('\n\n-----\n\n\n', getDate(), '  Mensagem recebida:')
+        console.log('    ',message.body)
+        console.log('   Autor:',message._data.notifyName)
+        console.log('   Numero:', message.author)
+    }
 
     // Stores the ID of the group chat, used for the scheduled functions
     if (config.id_grupo === null)
