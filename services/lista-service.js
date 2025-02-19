@@ -190,6 +190,7 @@ function sorteiaTimes(client, group_id) {
 
     // Creates the final Lista with drawed Times
     for (let i = 1, jogador_index = 0; i<=numero_times; i++) {
+        console.log('    TIME', i)
         template_times += `  *TIME ${i}*\n\n`
         for (let j = 1; j <= jogadores_por_time; j++) {
             if (lista_jogadores[jogador_index] == undefined) {
@@ -201,10 +202,11 @@ function sorteiaTimes(client, group_id) {
                 jogador_index++
             }
         }
+        if (i != numero_times) console.log('    -----')
         template_times += `\n`
     }
 
-    console.log('\n', getDate(),'  Fez o Sorteio dos times\n\n', template_times)
+    console.log('\n', getDate(),'  Fez o Sorteio dos times')
 
     // Send formatted Lista to group chat
     client.sendMessage(group_id, template_times)
