@@ -54,12 +54,24 @@ client.on("ready", () => {
         numberColor: 'white',
         dashColor: 'white',
     }))
+
+    console.log('\n', getDate(), '  Iniciando chamada de funcoes agendadas')
+
     // Daily/Hourly Get Lista Function
+    console.log('\n', getDate(), '  Chamando scheduleEnviaLista...')
     scheduleEnviaLista(client)
+    console.log('', getDate(), '  Chamado com sucesso!')
+
     // Weekly Clear Lista Function
+    console.log('\n', getDate(), '  Chamando scheduleLimpaLista...')
     scheduleLimpaLista(client)
+    console.log('', getDate(), '  Chamado com sucesso!')
+
     // Weekly Draw Times from Lista
+    console.log('\n', getDate(), '  Chamando scheduleSorteiaTimes...')
     scheduleSorteiaTimes(client)
+    console.log('', getDate(), '  Chamado com sucesso!')
+
 })
 
 // Message Listener
