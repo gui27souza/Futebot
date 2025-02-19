@@ -3,7 +3,7 @@
   "version": "2.0.2",
   "main": "bot/bot.js",
   "scripts": {
-    "start": "node bot/bot.js"
+    "start": "node bot/bot.js | tee bot-logs.log"
   },
   "keywords": [],
   "author": "Gui27Souza",

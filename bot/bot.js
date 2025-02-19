@@ -49,11 +49,8 @@ client.on("ready", () => {
     console.log('\n', getDate())
     console.log(prettyjson.render(config, {
         noAlign: true,
-        maxStringLength: 20,
-        keysColor: 'blue',
-        stringColor: 'white',
-        numberColor: 'white',
-        dashColor: 'white',
+        noColor: true,
+        maxStringLength: 20
     }))
 
     console.log('\n', getDate(), '  Iniciando chamada de funcoes agendadas')
