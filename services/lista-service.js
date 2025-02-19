@@ -120,6 +120,7 @@ function getLista() {
     // Add each Jogador to Lista template
     let i = 1
     lista.jogadores.forEach(jogador => {
+        if (i<10) template_lista += '  '
         template_lista += `  ${i++} - ${jogador.nome}\n`
     })
     
