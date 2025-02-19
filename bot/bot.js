@@ -1,6 +1,7 @@
 // Module Imports
     const { Client, LocalAuth } = require("whatsapp-web.js")
     const qrcode = require("qrcode-terminal")
+    const prettyjson = require('prettyjson')
 // 
 
 // Functions Imports
@@ -43,6 +44,16 @@
 client.on("ready", () => {
     console.log('\n', getDate(), '  Bot conectado!')
 
+    let config = readConfig()
+    console.log('\n', getDate())
+    console.log(prettyjson.render(config, {
+        noAlign: true,
+        maxStringLength: 20,
+        keysColor: 'blue',
+        stringColor: 'white',
+        numberColor: 'white',
+        dashColor: 'white',
+    }))
     // Daily/Hourly Get Lista Function
     scheduleEnviaLista(client)
     // Weekly Clear Lista Function
