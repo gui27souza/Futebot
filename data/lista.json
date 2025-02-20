@@ -1,6 +1,13 @@
 {
    "jogadores": [],
    "numero_jogadores": 0,
+
+   "goleiros":[],
+   "numero_goleiros":0,
+
+   "duvida": [],
+   "numero_duvida":0,
+   
    "nao_vai": [],
    "numero_naovai": 0
 }
