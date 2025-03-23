@@ -6,8 +6,8 @@
 
 // Functions Imports
     const { getDate } = require("../util/get-date.js")
-    const { readConfig, updateConfig, readLista, updateLista } = require('../util/json-handler.js')
-    const { adicionarJogadorLista, getLista, adicionarNaoVai, removeLastJogador, removeLastNaoVai, removeJogador, removeNaoVai, sorteiaTimes } = require("../services/lista-service.js")
+    const { readConfig, updateConfig, updateLista } = require('../util/json-handler.js')
+    const { addToLista, removeFromLista, getLista, sorteiaTimes } = require("../services/lista-service.js")
 
     const scheduleEnviaLista = require('../services/periodico/periodico-lista-service.js')
     const scheduleLimpaLista = require('../services/periodico/semanal-limpa-lista.js')
