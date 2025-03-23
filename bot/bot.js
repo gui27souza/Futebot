@@ -144,87 +144,49 @@ client.on("message", async (message) => {
         return
     }
 
-
-    // Remove specified Jogador of Lista
-    if (message.body.includes(`@${config.bot_number} removeJogador `)) {
+    // Lista manager function
+    if (message.body.includes(`@${config.bot_number} add`) ||
+        message.body.includes(`@${config.bot_number} remove`)) {
         
-        let nome_jogador = message.body.replace(`@${config.bot_number} removeJogador `, '').trim()
-        if (nome_jogador == '') return
+        let match = message.body.replace(`@${config.bot_number} `, '')
+                    .trim()
+                    .match(/^(\S+)\s+(\S+)\s+(.+)$/)
+        ;
+        let message_array = match ? [match[1], match[2], match[3]] : message.body.split(/\s+/)
+        
+        let message_command = message_array[0]
+        let message_type = message_array[1]
+        let message_name = message_array[2]
 
-        let achou_removeu = removeJogador(nome_jogador)
+        if (!['add', 'remove'].includes(message_command)) return
+        if (!['jogador', 'goleiro', 'duvida', 'ausente'].includes(message_type)) return
+        if (!message_name) return
 
-        if(achou_removeu) {
+        if (message_command == 'add') {
+            addToLista(message_name, message_type, 'numero_'+message_type)
             message.reply(getLista())
-            console.log('\n', getDate(), `  Removeu jogador ${nome_jogador.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}`)
-        } else {
-            message.reply(`Jogador ${nome_jogador} não esta na lista 🧐!!`)
-            console.log('\n', getDate(), `  Não removeu ${nome_jogador.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
+            console.log('\n', getDate(), `  Adicionou jogador ${message_name.toUpperCase()} a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
+            return
         }
 
-        return
-    }
-
-    // Remove specified NaoVai of Lista
-    if (message.body.includes(`@${config.bot_number} removeNaoVai `)) {
-        
-        let nome_naovai = message.body.replace(`@${config.bot_number} removeNaoVai `, '').trim()
-        if (nome_naovai == '') return
-
-        let achou_removeu = removeNaoVai(nome_naovai)
-
-        if(achou_removeu) {
-            message.reply(getLista())
-            console.log('\n', getDate(), `  Removeu naovai ${nome_naovai.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}`)
-        } else {
-            message.reply(`NaoVai ${nome_naovai} não esta na lista 🧐!!`)
-            console.log('\n', getDate(), `  Não removeu ${nome_naovai.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
+        if (message_command == 'remove') {
+            let achou_removeu = removeFromLista(message_name, message_type, 'numero_'+message_type)
+            if(achou_removeu) {
+                message.reply(getLista())
+                console.log('\n', getDate(), `  Removeu ${message_type} ${message_name.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}`)
+            } 
+            else {
+                message.reply(`${message_type} ${message_name} não esta na lista 🧐!!`)
+                console.log('\n', getDate(), `  Não removeu ${message_type.toUpperCase()} ${message_name.toUpperCase()} a pedido de ${message._data.notifyName.toUpperCase()}: NAO ESTA NA LISTA`)
+            }
+            return
         }
 
-        return
-    }
-
-    // Remove last Jogador of Lista
-    if (message.body == `@${config.bot_number} removeLastJogador`) {
-        removeLastJogador()
-        message.reply(getLista())
-        console.log('\n', getDate(), '  Removeu ultimo jogador adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
-        return
-    }
-
-    // Remove last NaoVai of Lista
-    if (message.body == `@${config.bot_number} removeLastNaoVai`) {
-        removeLastNaoVai()
-        message.reply(getLista())
-        console.log('\n', getDate(), '  Removeu ultimo naovai adicionado a pedido de usuario ', message._data.notifyName.toUpperCase())
-        return
-    }
-    
-    // Add NaoVai to Lista
-    if (message.body.includes(`@${config.bot_number} não `)) {
-        
-        let nome_naovai = message.body.replace(`@${config.bot_number} não `, '').trim()
-        if (nome_naovai == '') return
-
-        adicionarNaoVai(nome_naovai)
-
-        message.reply(getLista())
-        console.log('\n', getDate(), `  Adicionou jogador ${nome_naovai.toUpperCase()} que nao vai a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
-        return
-    }
-
-    // Add Jogador to Lista
-    if (message.body.includes(`@${config.bot_number} add `)) {
-        
-        let nome_jogador = message.body.replace(`@${config.bot_number} add `, '').trim()
-        if (nome_jogador == '') return
-
-        adicionarJogadorLista(nome_jogador)
-        
-        message.reply(getLista())
-        console.log('\n', getDate(), `  Adicionou jogador ${nome_jogador.toUpperCase()} a lista a pedido de usuario `, message._data.notifyName.toUpperCase())
-        return
     } 
 
+
+        return
+    }
 })
 
 // Main Function
