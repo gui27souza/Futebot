@@ -1,13 +1,10 @@
 {
-   "jogadores": [],
-   "numero_jogadores": 0,
-
-   "goleiros":[],
-   "numero_goleiros":0,
-
+   "jogador": [],
+   "numero_jogador": 0,
+   "goleiro": [],
+   "numero_goleiro": 0,
    "duvida": [],
-   "numero_duvida":0,
-   
-   "nao_vai": [],
+   "numero_duvida": 0,
+   "ausente": [],
    "numero_naovai": 0
 }
