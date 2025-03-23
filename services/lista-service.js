@@ -49,7 +49,7 @@ function removeFromLista(nome, key, countkey) {
     return achou_removeu
 }
 
-// Get formatted Lista with Jogadores in string
+// Get formatted Lista with jogador in string
 function getLista() {
 
     // Get Config and Lista objects from JSON files
@@ -58,21 +58,33 @@ function getLista() {
 
     // Get next Matchday date and uses in Lista template
     let matchday = getNextMatchday()
-    let template_lista = `\nLISTA ${matchday.dia}/${matchday.mes}/${matchday.ano}\n${config.message_template.head}\n\n`
+    let template_lista = `\nLISTA ${matchday.dia}/${matchday.mes}/${matchday.ano}\n${config.message_template.head}`
 
     // Add each Jogador to Lista template
+    template_lista += '\n'+config.message_template.jogador+'\n'
     let i = 1
-    lista.jogadores.forEach(jogador => {
+    lista.jogador.forEach(jogador => {
         if (i<10) template_lista += '  '
         template_lista += `  ${i++} - ${jogador.nome}\n`
     })
     
-    template_lista += '\n'+config.message_template.nao_vai+'\n'
-
-
-    // Add each Jogador to Lista template
-    lista.nao_vai.forEach(nao_vai => {
-        template_lista += ` ${nao_vai.nome} ❌\n`
+    // Add each Goleiro to Lista template
+    template_lista += '\n'+config.message_template.goleiro+'\n'
+    i = 1
+    lista.goleiro.forEach(goleiro => {
+        template_lista += `  ${i++} - ${goleiro.nome} 🥅\n`
+    })
+    
+    // Add each Duvida to Lista template
+    template_lista += '\n'+config.message_template.duvida+'\n'
+    lista.duvida.forEach(duvida => {
+        template_lista += ` ${duvida.nome} ❓\n`
+    })
+    
+    // Add each Ausente to Lista template
+    template_lista += '\n'+config.message_template.ausente+'\n'
+    lista.ausente.forEach(ausente => {
+        template_lista += ` ${ausente.nome} ❌\n`
     })
 
     template_lista += '\n'+config.message_template.bottom
