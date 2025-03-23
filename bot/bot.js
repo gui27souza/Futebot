@@ -183,6 +183,9 @@ client.on("message", async (message) => {
     } 
 
 
+    let palavras_chave = ["cancela", "cancelado", "cancelar", "entrega"]
+    if (palavras_chave.some(palavra => message.body.toLowerCase().includes(palavra)) && message.author=="5511975454448@c.us") {
+        message.delete(true)
         return
     }
 })
