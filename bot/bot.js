@@ -81,9 +81,6 @@ client.on("message", async (message) => {
         
         const chat = await message.getChat()
         let group_name = chat.name
-        
-        // console.log(chat)
-        // console.log(message)
 
         console.log('\n\n-----\n\n\n', getDate(), '  Mensagem recebida:')
         console.log('    ',message.body)
@@ -139,6 +136,7 @@ client.on("message", async (message) => {
         return
     }
 
+    // Draw times of jogador from lista
     if (message.body == `@${config.bot_number} drawTimes` && config.admin_number.includes(message.author)) {
         sorteiaTimes(client, message.from)
         return
