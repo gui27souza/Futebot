@@ -4,8 +4,11 @@
    "admin_number": [],
    "matchday": 0,
    "message_template": {
-      "head": "\nJogadores",
-      "nao_vai": "Ausentes\n",
+      "head":"Início da lista",
+      "jogador": "Jogadores",
+      "goleiro": "Goleiros",
+      "duvida": "Em Dúvida",
+      "ausente": "Ausentes",
       "bottom": "Fim da lista"
    }
 }
