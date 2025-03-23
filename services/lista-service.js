@@ -49,32 +49,6 @@ function removeFromLista(nome, key, countkey) {
     return achou_removeu
 }
 
-// Remove last Jogador from Lista
-function removeLastJogador() {
-
-    // Get Lista object from JSON file
-    let lista = readLista()
-
-    lista.jogadores.pop()
-    lista.numero_jogadores--
-
-    // Update JSON file with new Lista object
-    updateLista(lista)
-}
-
-// Remove last NaoVai from Lista
-function removeLastNaoVai() {
-
-    // Get Lista object from JSON file
-    let lista = readLista()
-
-    lista.nao_vai.pop()
-    lista.numero_naovai--
-
-    // Update JSON file with new Lista object
-    updateLista(lista)
-}
-
 // Get formatted Lista with Jogadores in string
 function getLista() {
 
