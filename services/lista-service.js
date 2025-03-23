@@ -181,13 +181,12 @@ function sorteiaTimes(client, group_id) {
 }
 
 // Functions Exports
-module.exports = { 
-    adicionarJogadorLista,
-    adicionarNaoVai,
-    removeJogador,
-    removeNaoVai,
-    removeLastJogador,
-    removeLastNaoVai,
+module.exports = {
+    addToLista,
+
+    removeFromLista,
+
     getLista,
+
     sorteiaTimes
 }
