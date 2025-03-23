@@ -93,7 +93,7 @@ function getLista() {
     return template_lista
 }
 
-// Draws Jogadores on Times based on Lista
+// Draws jogador on Times based on Lista
 function sorteiaTimes(client, group_id) {
 
     console.log('\n', getDate(), 'Iniciando sorteio de times\n')
@@ -104,37 +104,41 @@ function sorteiaTimes(client, group_id) {
 
     // Gets necessary data
     let lista = readLista()
-    let lista_jogadores = lista.jogadores
-    const numero_jogadores = lista.numero_jogadores
+    let lista_jogador = lista.jogador
+    let numero_jogador = lista.numero_jogador
+    console.log(numero_jogador)
 
-    // Randomize array of Jogadores
-    for (let i = numero_jogadores-1; i > 0; i--) {
+    // Randomize array of jogador
+    for (let i = numero_jogador-1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1))
-        var temp = lista_jogadores[i]
-        lista_jogadores[i] = lista_jogadores[j]
-        lista_jogadores[j] = temp
+        var temp = lista_jogador[i]
+        lista_jogador[i] = lista_jogador[j]
+        lista_jogador[j] = temp
     }
 
     // Creates template for drawed Times
     let matchday = getNextMatchday()
     let template_times = `TIMES ${matchday.dia}/${matchday.mes}/${matchday.ano}\n\n`
     let numero_times = 0
-    let jogadores_por_time = 6
+    let jogador_por_time = 6
+    numero_jogador += lista.numero_goleiro
 
-    // Defines the number of Times and Jogadores on Times based on total of Jogadores
+    // Defines the number of Times and jogador on Times based on total of jogador
     switch (true) {
-        case (numero_jogadores < 12):
-            client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭")
-            console.log('\n', getDate(),'  Não fez o Sorteio dos times: SEM JOGADORES SUFICIENTES\n', template_times)
+        case (numero_jogador < 10):
+            client.sendMessage(group_id, "Sem jogador o suficiente\nInfelizmente hoje não tem fut 😭")
+            console.log('\n', getDate(),'  Não fez o Sorteio dos times: SEM jogador SUFICIENTES\n', template_times)
             return
         break
         
-        case (numero_jogadores == 12): numero_times = 2; break
-        case (numero_jogadores == 15): numero_times = 3; jogadores_por_time = 5; break        
-        case (numero_jogadores == 20): numero_times = 4; jogadores_por_time = 5; break        
-        case (numero_jogadores > 12 && numero_jogadores <= 18): numero_times = 3; break        
-        case (numero_jogadores > 18 && numero_jogadores <= 24): numero_times = 4; break        
-        case (numero_jogadores > 24 && numero_jogadores <= 30): numero_times = 5; break
+        case (numero_jogador == 10): numero_times = 2; break
+        case (numero_jogador == 11): numero_times = 3; jogador_por_time = 5; break
+        case (numero_jogador == 12): numero_times = 2; break
+        case (numero_jogador == 15): numero_times = 3; jogador_por_time = 5; break        
+        case (numero_jogador == 20): numero_times = 4; jogador_por_time = 5; break        
+        case (numero_jogador > 12 && numero_jogador <= 18): numero_times = 3; break        
+        case (numero_jogador > 18 && numero_jogador <= 24): numero_times = 4; break        
+        case (numero_jogador > 24 && numero_jogador <= 30): numero_times = 5; break
     
         default:
             client.sendMessage(group_id, "Sem Jogadores o suficiente\nInfelizmente hoje não tem fut 😭")
@@ -145,18 +149,27 @@ function sorteiaTimes(client, group_id) {
 
     // Creates the final Lista with drawed Times
     for (let i = 1, jogador_index = 0; i<=numero_times; i++) {
+
         console.log('    TIME', i)
         template_times += `  *TIME ${i}*\n\n`
-        for (let j = 1; j <= jogadores_por_time; j++) {
-            if (lista_jogadores[jogador_index] == undefined) {
+
+        let j = 1
+        if (lista.goleiro[i-1] != undefined) {
+            console.log(`    Goleiro ${lista.goleiro[i-1].nome} foi incluido no time ${i}`)
+            template_times += `   ${j} - ${lista.goleiro[i-1].nome} 🥅\n`
+            j++
+        }
+        for (; j <= jogador_por_time; j++) {
+            if (lista_jogador[jogador_index] == undefined) {
                 template_times += `   ${j} -\n`
                 console.log(`    Espaço livre incluido no time ${i}`)
             } else {
-                console.log(`    Jogador ${lista_jogadores[jogador_index].nome} foi incluido no time ${i}`)
-                template_times += `   ${j} - ${lista_jogadores[jogador_index].nome||''}\n`
+                console.log(`    Jogador ${lista_jogador[jogador_index].nome} foi incluido no time ${i}`)
+                template_times += `   ${j} - ${lista_jogador[jogador_index].nome||''}\n`
                 jogador_index++
             }
         }
+
         if (i != numero_times) console.log('    -----')
         template_times += `\n`
     }
