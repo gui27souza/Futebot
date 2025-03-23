@@ -19,10 +19,8 @@ function addToLista(nome, key, countkey) {
     })
     lista[countkey]++
 
-    // Update JSON file with new Lista object with new NaoVai
+    // Update JSON file with new Lista object with new Element
     updateLista(lista)
-}
-
 
 }
 
