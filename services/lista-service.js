@@ -4,33 +4,20 @@
     const { readLista, updateLista, readConfig } = require('../util/json-handler.js')
 // 
 
-// Add Jogador to Lista
-function adicionarJogadorLista(nome) {
+function addToLista(nome, key, countkey) {
+
+    if (key != 'duvida') {
+        removeFromLista(nome, 'duvida', 'numero_duvida')
+    }
+
+    // Get Lista object from JSON file
+    let lista = readLista()
     
-    // Get Lista object from JSON file
-    let lista = readLista()
-
     // Add Jogador to Lista object
-    lista.jogadores.push({
-        nome: nome,
+    lista[key].push({
+        nome: nome
     })
-    lista.numero_jogadores++
-
-    // Update JSON file with new Lista object with new Jogador
-    updateLista(lista)
-}
-
-// Add NaoVai to Lista
-function adicionarNaoVai(nome) {
-
-    // Get Lista object from JSON file
-    let lista = readLista()
-
-    // Add NaoVai to Lista object
-    lista.nao_vai.push({
-        nome: nome,
-    })
-    lista.numero_naovai++
+    lista[countkey]++
 
     // Update JSON file with new Lista object with new NaoVai
     updateLista(lista)
