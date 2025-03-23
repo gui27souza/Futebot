@@ -23,45 +23,27 @@ function addToLista(nome, key, countkey) {
     updateLista(lista)
 }
 
-// Remove specified Jogador of Lista
-function removeJogador(nome) {
 
-    // Get Lista object from JSON file
-    let lista = readLista()
-
-    // Runs through the array of Jogadores
-    let achou_removeu = false
-    for (let i = 0; i < lista.numero_jogadores; i++) {
-        if (lista.jogadores[i].nome == nome) {
-            lista.jogadores.splice(i, 1)
-            lista.numero_jogadores--
-            achou_removeu = true
-            updateLista(lista)
-            break
-        }
-    }
-
-    // Return if it was successfull or not
-    return achou_removeu
 }
 
-// Remove specified NaoVai of Lista
-function removeNaoVai(nome) {
+// Remove <type> from Lista generic function
+function removeFromLista(nome, key, countkey) {
 
     // Get Lista object from JSON file
     let lista = readLista()
 
-    // Runs through the array of NaoVai
+    // Runs through the array of jogador
     let achou_removeu = false
-    for (let i = 0; i < lista.numero_naovai; i++) {
-        if (lista.nao_vai[i].nome == nome) {
-            lista.nao_vai.splice(i, 1)
-            lista.numero_naovai--
+    for (let i = 0; i < lista[countkey]; i++) {
+        if (lista[key][i].nome == nome) {
+            lista[key].splice(i, 1)
+            lista[countkey]--
             achou_removeu = true
-            updateLista(lista)
             break
         }
     }
+    
+    if (achou_removeu) updateLista(lista)
 
     // Return if it was successfull or not
     return achou_removeu
