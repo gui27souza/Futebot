@@ -124,9 +124,13 @@ client.on("message", async (message) => {
     // Reset Lista Command
     if (message.body == `@${config.bot_number} resetLista` && config.admin_number.includes(message.author)) {
         let lista = {
-            "jogadores": [],
-            "numero_jogadores": 0,
-            "nao_vai": [],
+            "jogador": [],
+            "numero_jogador": 0,
+            "goleiro": [],
+            "numero_goleiro": 0,
+            "duvida": [],
+            "numero_duvida": 0,
+            "ausente": [],
             "numero_naovai": 0
         }
         updateLista(lista)
