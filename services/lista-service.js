@@ -4,6 +4,7 @@
     const { readLista, updateLista, readConfig } = require('../util/json-handler.js')
 // 
 
+// Add <type> to Lista generic function
 function addToLista(nome, key, countkey) {
 
     if (key != 'duvida') {

@@ -1,8 +1,10 @@
 {
-   "id_grupo": null,
-   "bot_number": null,
-   "admin_number": [],
-   "matchday": 0,
+   "id_grupo": "120363377913044148@g.us",
+   "bot_number": "5511976641404",
+   "admin_number": [
+      "5511980640455@c.us"
+   ],
+   "matchday": 5,
    "message_template": {
       "head":"Início da lista",
       "jogador": "Jogadores",

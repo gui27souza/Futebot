@@ -8,7 +8,7 @@ function getDate() {
     let minutos = agora.getMinutes()
     let segundos = agora.getSeconds()
 
-    // Formatando para exibição
+    // Formatando para exibicao
     let dataFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}:${segundos}\n`
 
     return dataFormatada

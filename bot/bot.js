@@ -75,13 +75,17 @@ client.on("ready", () => {
 // Message Listener
 client.on("message", async (message) => {
     
+    // Get Config
     let config = readConfig()
     
+    // Message Logs
     if (message.mentionedIds.includes(`${config.bot_number}@c.us`)) {
         
+        // Gets the chat name
         const chat = await message.getChat()
         let group_name = chat.name
 
+        // Logs Info
         console.log('\n\n-----\n\n\n', getDate(), '  Mensagem recebida:')
         console.log('    ',message.body)
         console.log('   Autor:',message._data.notifyName)
@@ -104,7 +108,7 @@ client.on("message", async (message) => {
         return
     }
 
-    // Get Commands list
+    // Get Commands List Command
     if (message.body == `@${config.bot_number} help`) {
         message.reply("*COMANDOS* \n\nadd <tipo> <nome>- adiciona o nome na respectiva lista\nremove <tipo> <nome> - remove o nome da respectiva lista\n\nshowLista - Mostra a lista da semana\n\nresetLista - reseta a lista da semana (admin only)\ndrawTimes - refaz o sorteio (admin only)\n")
         console.log('\n', getDate(), '  Enviou help a pedido de usuario ', message._data.notifyName.toUpperCase())
@@ -118,7 +122,7 @@ client.on("message", async (message) => {
         return
     }
 
-    // Reset Lista Command
+    // Reset Lista Command - Admin Only
     if (message.body == `@${config.bot_number} resetLista` && config.admin_number.includes(message.author)) {
         let lista = {
             "jogador": [],
@@ -136,7 +140,7 @@ client.on("message", async (message) => {
         return
     }
 
-    // Draw times of jogador from lista
+    // Draw times of jogador from lista - Admin Only
     if (message.body == `@${config.bot_number} drawTimes` && config.admin_number.includes(message.author)) {
         sorteiaTimes(client, message.from)
         return
@@ -183,6 +187,7 @@ client.on("message", async (message) => {
     } 
 
 
+    // Erase Message function
     let palavras_chave = ["cancela", "cancelado", "cancelar", "entrega"]
     if (palavras_chave.some(palavra => message.body.toLowerCase().includes(palavra)) && message.author=="5511975454448@c.us") {
         message.delete(true)

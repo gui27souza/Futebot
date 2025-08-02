@@ -44,7 +44,7 @@ To use the commands, the user must ping the bot and use the correct word in the 
 
 #### Bot Admin Commands
 - resetLista - resets the weekly list
-- drawTimes - draw Times of Jogadores
+- drawTimes - draw Times of jogador
 
 ## Technologies used
 

@@ -7,6 +7,7 @@
 
 // Resets Lista
 function limpaLista() {
+
     // New clean object
     let lista = {
         "jogador": [],
@@ -18,6 +19,7 @@ function limpaLista() {
         "ausente": [],
         "numero_naovai": 0
     }
+    
     // Update the JSON file with clean object
     updateLista(lista)
 
