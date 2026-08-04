@@ -6,11 +6,11 @@ import (
 )
 
 type List struct {
-	presentPlayers []string
-	absentPlayers  []string
+	present []string
+	absent  []string
 }
 
-func addPlayer(s []string, name string) ([]string, error) {
+func add(s []string, name string) ([]string, error) {
 
 	if slices.Contains(s, name) {
 		return s, fmt.Errorf("player %s is already in the list", name)
@@ -19,7 +19,7 @@ func addPlayer(s []string, name string) ([]string, error) {
 	return append(s, name), nil
 }
 
-func removePlayer(s []string, name string) ([]string, error) {
+func remove(s []string, name string) ([]string, error) {
 
 	i := slices.Index(s, name)
 	if i == -1 {
@@ -29,50 +29,50 @@ func removePlayer(s []string, name string) ([]string, error) {
 	return slices.Delete(s, i, i+1), nil
 }
 
-func (l *List) AddPresentPlayer(name string) error {
+func (l *List) AddPresent(name string) error {
 
-	updated, err := addPlayer(l.presentPlayers, name)
+	updated, err := add(l.present, name)
 	if err != nil {
 		return err
 	}
 
-	l.presentPlayers = updated
+	l.present = updated
 
 	return nil
 }
 
-func (l *List) RemovePresentPlayer(name string) error {
+func (l *List) RemovePresent(name string) error {
 
-	updated, err := removePlayer(l.presentPlayers, name)
+	updated, err := remove(l.present, name)
 	if err != nil {
 		return err
 	}
 
-	l.presentPlayers = updated
+	l.present = updated
 
 	return nil
 }
 
-func (l *List) AddAbsentPlayer(name string) error {
+func (l *List) AddAbsent(name string) error {
 
-	updated, err := addPlayer(l.absentPlayers, name)
+	updated, err := add(l.absent, name)
 	if err != nil {
 		return err
 	}
 
-	l.absentPlayers = updated
+	l.absent = updated
 
 	return nil
 }
 
-func (l *List) RemoveAbsentPlayer(name string) error {
+func (l *List) RemoveAbsent(name string) error {
 
-	updated, err := removePlayer(l.absentPlayers, name)
+	updated, err := remove(l.absent, name)
 	if err != nil {
 		return err
 	}
 
-	l.absentPlayers = updated
+	l.absent = updated
 
 	return nil
 }
