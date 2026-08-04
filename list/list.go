@@ -73,6 +73,6 @@ func (l *List) RemoveAbsentPlayer(name string) error {
 	}
 
 	l.absentPlayers = updated
-	
+
 	return nil
 }
