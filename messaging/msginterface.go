@@ -1,6 +1,12 @@
 package messaging
 
-type msgI struct {
+import (
+	"futebot/list"
+)
 
-	
+type MsgI interface {
+	SendMessage(m string) error
+	ReceiveMessage() error
+
+	SendList(l *list.List) error
 }
