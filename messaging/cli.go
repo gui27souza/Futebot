@@ -6,6 +6,6 @@ import (
 
 type CLI struct {}
 
-func (c *CLI) SendMessage(m string) {
+func (c *CLI) Send(m string) {
 	slog.Info(m)
 }
