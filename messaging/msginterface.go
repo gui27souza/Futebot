@@ -5,8 +5,8 @@ import (
 )
 
 type MsgI interface {
-	Send(m string)
-	Receive() error
+	Send(m string) error
+	Receive() (string, error)
 
 	SendList(l *list.List) error
 }
