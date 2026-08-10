@@ -10,6 +10,10 @@ import (
 
 type CLI struct{}
 
+func NewCLI() MsgI {
+	return &CLI{}
+}
+
 func (c *CLI) Send(m string) error {
 	slog.Info(m)
 	return nil
@@ -31,6 +35,7 @@ func (c *CLI) Receive() (string, error) {
 	return input, nil
 }
 
-func (c* CLI) SendList(l *list.List) error {
+func (c *CLI) SendList(l *list.List) error {
 	slog.Info("Present")
+	return nil
 }

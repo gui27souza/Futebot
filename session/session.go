@@ -1,8 +1,8 @@
 package session
 
 import (
-	"os"
 	"futebot/messaging"
+	"os"
 )
 
 type Session struct {
@@ -23,11 +23,11 @@ func (s *Session) dealMsgI(msgEnv string) error {
 
 	switch msgEnv {
 	case "cli":
-		s.msgI = messaging.CLI{}
+		s.msgI = messaging.NewCLI()
 	case "whatsapp":
-		
+		s.msgI = messaging.NewWpp()
 	default:
-
+		s.msgI = messaging.NewCLI()
 	}
 
 	return nil
